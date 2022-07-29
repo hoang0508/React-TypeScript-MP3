@@ -1,0 +1,19 @@
+import * as React from "react";
+import { Link } from "react-router-dom";
+
+export interface HomeSidebarprops {}
+
+export function HomeSidebar(props: HomeSidebarprops) {
+  return (
+    <div className="max-w-[200px] w-full h-full py-5 px-4 border-r border-white">
+      <div className="flex items-center gap">
+        <img
+          src="/logo.png"
+          alt="logo"
+          className="w-[48px] h-[24px] object-cover"
+        />
+        <button>Nâng cấp</button>
+      </div>
+    </div>
+  );
+}

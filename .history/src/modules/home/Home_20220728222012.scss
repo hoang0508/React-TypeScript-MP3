@@ -1,0 +1,28 @@
+.link-border {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #287be5;
+  }
+}
+
+.home {
+  &-banner {
+    background: #3e5151; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #decba4,
+      #3e5151
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #decba4,
+      #3e5151
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+}
