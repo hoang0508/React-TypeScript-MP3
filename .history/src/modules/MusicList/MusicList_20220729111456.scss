@@ -1,0 +1,15 @@
+.music {
+  &-list {
+    transition: all 0.25s linear;
+  }
+  &-list:hover .music-dot--active {
+    background-color: rgba(244, 246, 248, 0.05);
+    // opacity: 1;
+    // visibility: visible;
+  }
+  .music-dot--active {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+}
