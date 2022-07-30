@@ -5,27 +5,20 @@ import MusicTitle from "../music/parts/MusicTitle";
 import "../music/MusicList.scss";
 import IconClendar from "../../components/icon/IconClendar";
 import { v4 } from "uuid";
-import { MusicItemType } from "../music";
 export interface HomeMusicNewprops {}
 
 export default function HomeMusicNew(props: HomeMusicNewprops) {
   const data = useSelector((state: any) => state.music.dataMusic);
-  // const dataMusicNewList = data.newRelease?.song[0].artists;
+  const dataMusicNew = data.newRelease?.song[0];
+  const dataMusicNewList = data.newRelease?.song[0].artists;
   const dataMusicItem = data.newRelease?.song;
-
-  // state music new
-
-  const [dataMusicNew, setDataMusicNew] = React.useState<any>();
-  const [dataMusicNewList, setDataMusicNewList] = React.useState<any>();
-  const handleMouseItem = (item: any) => {
-    setDataMusicNew(item);
-    setDataMusicNewList(item.artists);
+  console.log(
+    "🚀 ~ file: HomeMusicNew.tsx ~ line 15 ~ HomeMusicNew ~ dataMusicItem",
+    dataMusicItem
+  );
+  const handleMouseItem = () => {
+    console.log("abc");
   };
-
-  React.useEffect(() => {
-    setDataMusicNew(data.newRelease?.song[0]);
-    setDataMusicNewList(data.newRelease?.song[0].artists);
-  }, [data.newRelease?.song]);
   return (
     <div>
       <div className="bg-bgColor2 py-5 px-10 flex gap-x-10 mb-6">
@@ -73,7 +66,7 @@ export default function HomeMusicNew(props: HomeMusicNewprops) {
               classNames="h-[80px]"
               key={v4()}
               data={item}
-              onMouse={() => handleMouseItem(item)}
+              onMouse={() => handleMouseItem()}
             ></MusciItem>
           ))}
       </div>

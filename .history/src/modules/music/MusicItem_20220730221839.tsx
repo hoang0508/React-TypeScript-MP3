@@ -7,17 +7,18 @@ interface MusciItemProps {
   data: MusicItemType;
   heading?: string;
   classNames?: string;
-  onMouse?: () => void;
 }
 
 export default function MusciItem({
   data,
   heading,
   classNames = "h-[177px]",
-  onMouse,
 }: MusciItemProps) {
+  const handleMouseItem = () => {
+    console.log("abc");
+  };
   return (
-    <div className="cursor-pointer" onMouseEnter={onMouse}>
+    <div className="cursor-pointer" onMouseUp={() => handleMouseItem()}>
       <div className="relative mb-3 overflow-hidden music-item">
         <div className={`music-image ${classNames}`}>
           <img

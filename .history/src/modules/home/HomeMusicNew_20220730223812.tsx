@@ -5,30 +5,23 @@ import MusicTitle from "../music/parts/MusicTitle";
 import "../music/MusicList.scss";
 import IconClendar from "../../components/icon/IconClendar";
 import { v4 } from "uuid";
-import { MusicItemType } from "../music";
 export interface HomeMusicNewprops {}
 
 export default function HomeMusicNew(props: HomeMusicNewprops) {
   const data = useSelector((state: any) => state.music.dataMusic);
-  // const dataMusicNewList = data.newRelease?.song[0].artists;
+  const dataMusicNewList = data.newRelease?.song[0].artists;
   const dataMusicItem = data.newRelease?.song;
 
   // state music new
 
-  const [dataMusicNew, setDataMusicNew] = React.useState<any>();
-  const [dataMusicNewList, setDataMusicNewList] = React.useState<any>();
-  const handleMouseItem = (item: any) => {
+  const [dataMusicNew, setDataMusicNew] = React.useState<{}>();
+  const handleMouseItem = (item: string) => {
     setDataMusicNew(item);
-    setDataMusicNewList(item.artists);
   };
-
-  React.useEffect(() => {
-    setDataMusicNew(data.newRelease?.song[0]);
-    setDataMusicNewList(data.newRelease?.song[0].artists);
-  }, [data.newRelease?.song]);
+  console.log(dataMusicNew);
   return (
     <div>
-      <div className="bg-bgColor2 py-5 px-10 flex gap-x-10 mb-6">
+      {/* <div className="bg-bgColor2 py-5 px-10 flex gap-x-10 mb-6">
         <div>
           <MusciItem data={dataMusicNew}></MusciItem>
         </div>
@@ -64,7 +57,7 @@ export default function HomeMusicNew(props: HomeMusicNewprops) {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="flex justify-center items-center gap-x-4">
         {dataMusicItem &&
           dataMusicItem.length > 0 &&

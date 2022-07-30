@@ -17,7 +17,7 @@ export default function MusciItem({
   onMouse,
 }: MusciItemProps) {
   return (
-    <div className="cursor-pointer" onMouseEnter={onMouse}>
+    <div className="cursor-pointer" onMouseMoveCapture={onMouse}>
       <div className="relative mb-3 overflow-hidden music-item">
         <div className={`music-image ${classNames}`}>
           <img

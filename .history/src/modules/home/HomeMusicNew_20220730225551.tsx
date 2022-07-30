@@ -23,7 +23,6 @@ export default function HomeMusicNew(props: HomeMusicNewprops) {
   };
 
   React.useEffect(() => {
-    setDataMusicNew(data.newRelease?.song[0]);
     setDataMusicNewList(data.newRelease?.song[0].artists);
   }, [data.newRelease?.song]);
   return (

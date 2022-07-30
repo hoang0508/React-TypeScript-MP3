@@ -21,11 +21,7 @@ export default function HomeMusicNew(props: HomeMusicNewprops) {
     setDataMusicNew(item);
     setDataMusicNewList(item.artists);
   };
-
-  React.useEffect(() => {
-    setDataMusicNew(data.newRelease?.song[0]);
-    setDataMusicNewList(data.newRelease?.song[0].artists);
-  }, [data.newRelease?.song]);
+  console.log(dataMusicNew);
   return (
     <div>
       <div className="bg-bgColor2 py-5 px-10 flex gap-x-10 mb-6">
