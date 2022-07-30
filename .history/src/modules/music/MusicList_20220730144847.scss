@@ -38,15 +38,4 @@
     visibility: hidden;
     transition: all 0.2s ease;
   }
-  &-title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
-  }
-  &-image--author:not(:first-child) {
-    margin-left: -10px;
-  }
 }

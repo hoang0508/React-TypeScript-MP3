@@ -4,7 +4,6 @@ import Gap from "../components/common/Gap";
 import HeadingLine from "../components/common/Headingline";
 import { LayoutMusicPage } from "../layout/LayoutMusicPage";
 import HomeBanner from "../modules/home/HomeBanner";
-import HomeMusicNew from "../modules/home/HomeMusicNew";
 import MusicListFeed from "../modules/music/MusicListFeed";
 import { Fetchdata } from "../redux/MusicSlice";
 
@@ -24,11 +23,6 @@ export default function HomePage(props: HomePageProps) {
       <HeadingLine>Lựa Chọn Cuối Tuần</HeadingLine>
       <MusicListFeed heading="select"></MusicListFeed>
       <Gap />
-      <HeadingLine>List Này Cháy Lắm</HeadingLine>
-      <MusicListFeed heading="fire"></MusicListFeed>
-      <Gap />
-      <HeadingLine>Mới phát hành</HeadingLine>
-      <HomeMusicNew></HomeMusicNew>
     </LayoutMusicPage>
   );
 }

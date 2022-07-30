@@ -27,6 +27,7 @@ export default function MusicListFeed({ heading }: MusicListFeedProps) {
     default:
       break;
   }
+  console.log(dataFeed);
   return (
     <div className="music-list">
       <Swiper grabCursor spaceBetween={20} slidesPerView={"auto"}>
@@ -34,7 +35,7 @@ export default function MusicListFeed({ heading }: MusicListFeedProps) {
           dataFeed.length > 0 &&
           dataFeed.map((item: MusicItemType) => (
             <SwiperSlide key={item.key}>
-              <MusciItem data={item} heading={"abc"}></MusciItem>
+              <MusciItem data={item}></MusciItem>
             </SwiperSlide>
           ))}
       </Swiper>

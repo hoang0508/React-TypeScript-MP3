@@ -5,14 +5,6 @@
     &:hover .music-image img {
       transform: scale(1.1);
     }
-    &:hover .music-icon {
-      opacity: 1;
-      visibility: visible;
-    }
-    &:hover .music-overlay {
-      opacity: 1;
-      visibility: visible;
-    }
   }
   &-image img {
     overflow: hidden;
@@ -37,16 +29,5 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
-  }
-  &-title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
-  }
-  &-image--author:not(:first-child) {
-    margin-left: -10px;
   }
 }

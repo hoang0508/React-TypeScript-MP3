@@ -2,19 +2,18 @@ import * as React from "react";
 import { IconDots, IconPlay } from "../../components/icon";
 import "./MusicList.scss";
 import { MusicItemType } from "./index";
-import MusicTitle from "./parts/MusicTitle";
 interface MusciItemProps {
+  children?: any;
   data: MusicItemType;
-  heading?: string;
 }
 
-export default function MusciItem({ data, heading }: MusciItemProps) {
+export default function MusciItem({ children, data }: MusciItemProps) {
   return (
     <div>
       <div className="relative mb-3 overflow-hidden music-item">
         <div className="h-[177px] music-image">
           <img
-            src={data?.thumbnail}
+            src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bXVzaWN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
             alt=""
             className="w-full h-full rounded-lg object-cover overflow-hidden"
           />
@@ -32,7 +31,12 @@ export default function MusciItem({ data, heading }: MusciItemProps) {
           </span>
         </div>
       </div>
-      {heading && <MusicTitle>{data?.title}</MusicTitle>}
+      <h3
+        className="font-medium text-sm
+      text-text1"
+      >
+        {children}
+      </h3>
     </div>
   );
 }

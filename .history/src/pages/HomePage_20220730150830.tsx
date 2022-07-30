@@ -27,7 +27,6 @@ export default function HomePage(props: HomePageProps) {
       <HeadingLine>List Này Cháy Lắm</HeadingLine>
       <MusicListFeed heading="fire"></MusicListFeed>
       <Gap />
-      <HeadingLine>Mới phát hành</HeadingLine>
       <HomeMusicNew></HomeMusicNew>
     </LayoutMusicPage>
   );

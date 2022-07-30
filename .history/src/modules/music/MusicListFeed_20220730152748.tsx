@@ -27,6 +27,7 @@ export default function MusicListFeed({ heading }: MusicListFeedProps) {
     default:
       break;
   }
+  console.log(dataFeed);
   return (
     <div className="music-list">
       <Swiper grabCursor spaceBetween={20} slidesPerView={"auto"}>

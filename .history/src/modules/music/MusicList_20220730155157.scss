@@ -47,6 +47,6 @@
     word-break: break-word;
   }
   &-image--author:not(:first-child) {
-    margin-left: -10px;
+    transform: translateX(-10px);
   }
 }

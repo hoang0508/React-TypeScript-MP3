@@ -1,22 +1,14 @@
 .music {
   &-item {
     cursor: pointer;
-    border-radius: 10px;
     &:hover .music-image img {
       transform: scale(1.1);
-    }
-    &:hover .music-icon {
-      opacity: 1;
-      visibility: visible;
-    }
-    &:hover .music-overlay {
-      opacity: 1;
-      visibility: visible;
     }
   }
   &-image img {
     overflow: hidden;
     transition: all 0.25s linear;
+    border-radius: 10px;
   }
   &-overlay {
     background-color: rgba(0, 0, 0, 0.5);
@@ -37,16 +29,5 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
-  }
-  &-title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
-  }
-  &-image--author:not(:first-child) {
-    margin-left: -10px;
   }
 }

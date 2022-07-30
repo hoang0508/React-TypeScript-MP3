@@ -14,7 +14,7 @@ export default function MusciItem({ data, heading }: MusciItemProps) {
       <div className="relative mb-3 overflow-hidden music-item">
         <div className="h-[177px] music-image">
           <img
-            src={data?.thumbnail}
+            src={data.thumbnail}
             alt=""
             className="w-full h-full rounded-lg object-cover overflow-hidden"
           />
