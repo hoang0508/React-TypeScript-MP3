@@ -27,14 +27,14 @@ export default function MusicListFeed({ heading }: MusicListFeedProps) {
       break;
     case "fire":
       dataFeed = data?.topicEvent ? data?.topicEvent[2]?.listPlaylist : null;
-      dataHeading = data?.topicEvent ? data?.topicEvent[2]?.groupName : null;
+      dataHeading = data?.topicEvent ? data?.topicEvent[1]?.groupName : null;
       break;
     default:
       break;
   }
   return (
     <>
-      {dataHeading && <HeadingLine>{dataHeading.split("_")[0]}</HeadingLine>}
+      <HeadingLine>{dataHeading}</HeadingLine>
       <div className="music-list">
         <Swiper grabCursor spaceBetween={20} slidesPerView={"auto"}>
           {dataFeed &&

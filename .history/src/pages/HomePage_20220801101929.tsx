@@ -5,7 +5,6 @@ import HeadingLine from "../components/common/Headingline";
 import { LayoutMusicPage } from "../layout/LayoutMusicPage";
 import HomeBanner from "../modules/home/HomeBanner";
 import HomeMusicNew from "../modules/home/HomeMusicNew";
-import HomeMusicVideo from "../modules/home/HomeMusicVideo";
 import MusicListFeed from "../modules/music/MusicListFeed";
 import MusicNCT from "../modules/music/MusicNCT";
 import { Fetchdata } from "../redux/MusicSlice";
@@ -23,8 +22,10 @@ export default function HomePage(props: HomePageProps) {
       <HomeBanner></HomeBanner>
       <MusicListFeed heading="miss"></MusicListFeed>
       <Gap />
+
       <MusicListFeed heading="select"></MusicListFeed>
       <Gap />
+
       <MusicListFeed heading="fire"></MusicListFeed>
       <Gap />
       <HeadingLine>Mới phát hành</HeadingLine>
@@ -32,9 +33,6 @@ export default function HomePage(props: HomePageProps) {
       <Gap />
       <HeadingLine>NCT Realtime</HeadingLine>
       <MusicNCT></MusicNCT>
-      <Gap />
-      <HeadingLine>Video hot</HeadingLine>
-      <HomeMusicVideo></HomeMusicVideo>
     </LayoutMusicPage>
   );
 }

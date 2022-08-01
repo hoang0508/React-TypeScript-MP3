@@ -9,12 +9,12 @@ const {
   //... and many other services
 } = require("nhaccuatui-api-full");
 function App() {
-  // useEffect(() => {
-  //   (async () => {
-  //     const data = await getHome();
-  //     console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const data = await getPlaylists();
+      console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
+    })();
+  }, []);
   return (
     <Suspense fallback={<></>}>
       <Routes>

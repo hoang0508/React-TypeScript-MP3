@@ -3,7 +3,6 @@ import { IconDots, IconPlay } from "../../components/icon";
 import "./MusicList.scss";
 import { MusicItemType } from "./index";
 import MusicTitle from "./parts/MusicTitle";
-import MusicAuthor from "./parts/MusicAuthor";
 interface MusciItemProps {
   data: MusicItemType;
   heading?: string;
@@ -11,7 +10,6 @@ interface MusciItemProps {
   onMouse?: () => void;
   playNot?: boolean;
   musicTime?: boolean;
-  author?: {};
 }
 
 export default function MusciItem({
@@ -21,7 +19,6 @@ export default function MusciItem({
   onMouse,
   playNot,
   musicTime,
-  author,
 }: MusciItemProps) {
   return (
     <div className="cursor-pointer" onMouseEnter={onMouse}>
@@ -51,10 +48,7 @@ export default function MusciItem({
           </div>
         )}
       </div>
-      <div>
-        {heading && <MusicTitle className="mt-3">{data?.title}</MusicTitle>}
-        {author && <MusicAuthor className="mt-2 text-xs">{author}</MusicAuthor>}
-      </div>
+      {heading && <MusicTitle className="mt-3">{data?.title}</MusicTitle>}
     </div>
   );
 }

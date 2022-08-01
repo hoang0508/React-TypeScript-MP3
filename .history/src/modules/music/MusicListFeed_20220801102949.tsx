@@ -27,14 +27,16 @@ export default function MusicListFeed({ heading }: MusicListFeedProps) {
       break;
     case "fire":
       dataFeed = data?.topicEvent ? data?.topicEvent[2]?.listPlaylist : null;
-      dataHeading = data?.topicEvent ? data?.topicEvent[2]?.groupName : null;
+      dataHeading = data?.topicEvent ? data?.topicEvent[1]?.groupName : null;
       break;
     default:
       break;
   }
+  const h = dataHeading.split(" ");
+  console.log("🚀 ~ file: MusicListFeed.tsx ~ line 36 ~ MusicListFeed ~ h", h);
   return (
     <>
-      {dataHeading && <HeadingLine>{dataHeading.split("_")[0]}</HeadingLine>}
+      <HeadingLine>{dataHeading}</HeadingLine>
       <div className="music-list">
         <Swiper grabCursor spaceBetween={20} slidesPerView={"auto"}>
           {dataFeed &&

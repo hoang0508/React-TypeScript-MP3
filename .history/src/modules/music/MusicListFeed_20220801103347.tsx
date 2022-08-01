@@ -32,9 +32,10 @@ export default function MusicListFeed({ heading }: MusicListFeedProps) {
     default:
       break;
   }
+
   return (
     <>
-      {dataHeading && <HeadingLine>{dataHeading.split("_")[0]}</HeadingLine>}
+      <HeadingLine>{dataHeading.split("_")}</HeadingLine>
       <div className="music-list">
         <Swiper grabCursor spaceBetween={20} slidesPerView={"auto"}>
           {dataFeed &&

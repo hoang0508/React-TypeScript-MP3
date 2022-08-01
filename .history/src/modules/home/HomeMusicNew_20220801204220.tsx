@@ -5,17 +5,29 @@ import MusicTitle from "../music/parts/MusicTitle";
 import "../music/MusicList.scss";
 import IconClendar from "../../components/icon/IconClendar";
 import { v4 } from "uuid";
-import MusicAuthor from "../music/parts/MusicAuthor";
 export interface HomeMusicNewprops {}
 
 export default function HomeMusicNew(props: HomeMusicNewprops) {
   const data = useSelector((state: any) => state.music.dataMusic);
+  // const dataMusicNewList = data.newRelease?.song[0].artists;
+  const dataMusicItem = data.newRelease?.song;
 
   // state music new
-  const [dataMusicNew, setDataMusicNew] = React.useState<any>();
 
-  // data Music new List
+  const [dataMusicNew, setDataMusicNew] = React.useState<any>();
   const [dataMusicNewList, setDataMusicNewList] = React.useState<any>();
+  console.log(
+    "🚀 ~ file: HomeMusicNew.tsx ~ line 19 ~ HomeMusicNew ~ dataMusicNewList",
+    dataMusicNewList
+  );
+  console.log(
+    "🚀 ~ file: HomeMusicNew.tsx ~ line 19 ~ HomeMusicNew ~ dataMusicNewList",
+    dataMusicNewList[0]
+  );
+  // console.log(
+  //   "🚀 ~ file: HomeMusicNew.tsx ~ line 19 ~ HomeMusicNew ~ dataMusicNewList",
+  //   dataMusicNewList[0].name.split(" ")
+  // );
 
   // handle mouse Item
   const handleMouseItem = (item: any) => {
@@ -23,10 +35,6 @@ export default function HomeMusicNew(props: HomeMusicNewprops) {
     setDataMusicNewList(item.artists);
   };
 
-  //  music item
-  const dataMusicItem = data.newRelease?.song;
-
-  // useEffect
   React.useEffect(() => {
     setDataMusicNew(data.newRelease?.song[0]);
     setDataMusicNewList(data.newRelease?.song[0].artists);
@@ -53,10 +61,13 @@ export default function HomeMusicNew(props: HomeMusicNewprops) {
                   />
                 </div>
               ))}
-            <MusicAuthor key={v4()} className="ml-2">
-              {dataMusicNewList &&
-                dataMusicNewList.map((item: any) => item.name).join(" , ")}
-            </MusicAuthor>
+            {dataMusicNewList &&
+              dataMusicNewList.length > 0 &&
+              dataMusicNewList.map((item: any) => (
+                <div key={v4()} className="ml-2 music-name">
+                  {item.name.split(" ").join(",")}
+                </div>
+              ))}
           </div>
           <div className="flex gap-x-2 items-center">
             <IconClendar></IconClendar>

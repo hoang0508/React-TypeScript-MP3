@@ -5,7 +5,6 @@ import MusicTitle from "../music/parts/MusicTitle";
 import "../music/MusicList.scss";
 import IconClendar from "../../components/icon/IconClendar";
 import { v4 } from "uuid";
-import MusicAuthor from "../music/parts/MusicAuthor";
 export interface HomeMusicNewprops {}
 
 export default function HomeMusicNew(props: HomeMusicNewprops) {
@@ -53,10 +52,10 @@ export default function HomeMusicNew(props: HomeMusicNewprops) {
                   />
                 </div>
               ))}
-            <MusicAuthor key={v4()} className="ml-2">
+            <div key={v4()} className="ml-2 music-name">
               {dataMusicNewList &&
                 dataMusicNewList.map((item: any) => item.name).join(" , ")}
-            </MusicAuthor>
+            </div>
           </div>
           <div className="flex gap-x-2 items-center">
             <IconClendar></IconClendar>

@@ -112,10 +112,13 @@ export default function MusicNCT(props: MusicNCTProps) {
               </div>
               <div className="flex-1 flex justify-between items-center">
                 <div className="flex gap-x-2">
-                  <MusicAuthor key={v4()} className="text-text2 text-xs">
-                    {item.artists &&
-                      item.artists.map((art: any) => art.name).join(" , ")}
-                  </MusicAuthor>
+                  {item.artists &&
+                    item.artists.length > 0 &&
+                    item.artists.map((art: any) => (
+                      <MusicAuthor key={v4()} className="text-text2 text-xs">
+                        {art.name}
+                      </MusicAuthor>
+                    ))}
                 </div>
                 <IconDots></IconDots>
               </div>

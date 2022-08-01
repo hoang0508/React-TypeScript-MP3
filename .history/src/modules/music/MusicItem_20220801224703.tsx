@@ -11,7 +11,7 @@ interface MusciItemProps {
   onMouse?: () => void;
   playNot?: boolean;
   musicTime?: boolean;
-  author?: {};
+  author?: string;
 }
 
 export default function MusciItem({
@@ -53,7 +53,7 @@ export default function MusciItem({
       </div>
       <div>
         {heading && <MusicTitle className="mt-3">{data?.title}</MusicTitle>}
-        {author && <MusicAuthor className="mt-2 text-xs">{author}</MusicAuthor>}
+        {author && <MusicAuthor>{author}</MusicAuthor>}
       </div>
     </div>
   );
