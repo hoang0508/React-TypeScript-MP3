@@ -35,7 +35,7 @@ export default function MusciItem({
       <div className="relative overflow-hidden music-item">
         <div className={`music-image ${classNames}`}>
           <img
-            src={data?.thumbnail || data?.thumbURL}
+            src={data?.thumbnail}
             alt=""
             className="w-full h-full  object-cover overflow-hidden"
           />
@@ -58,8 +58,8 @@ export default function MusciItem({
           </div>
         )}
       </div>
-      <div className={`${flexCenter ? "" : "mt-3"}`}>
-        {heading && <MusicTitle>{data?.title}</MusicTitle>}
+      <div>
+        {heading && <MusicTitle className="">{data?.title}</MusicTitle>}
         {author && <MusicAuthor className="mt-2 text-xs">{author}</MusicAuthor>}
       </div>
     </div>

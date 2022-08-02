@@ -8,6 +8,7 @@ interface MusicVideoProps {}
 
 export default function MusicVideo(props: MusicVideoProps) {
   const data = useSelector((state: any) => state.music.dataMusic);
+  console.log("🚀 ~ file: MusicVideo.tsx ~ line 11 ~ MusicVideo ~ data", data);
 
   // data Vỉdeo
   const dataVideo = data?.video;
@@ -37,7 +38,7 @@ export default function MusicVideo(props: MusicVideoProps) {
         {dataVideo &&
           dataVideo.length &&
           dataVideo
-            .slice(3, 7)
+            .slice(2, 6)
             .map((item: MusicItemType) => (
               <MusciItem
                 key={v4()}

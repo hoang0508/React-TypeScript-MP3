@@ -6,7 +6,6 @@ import { LayoutMusicPage } from "../layout/LayoutMusicPage";
 import HomeBanner from "../modules/home/HomeBanner";
 import HomeMusicNew from "../modules/home/HomeMusicNew";
 import HomeMusicSong from "../modules/home/HomeMusicSong";
-import HomeMusicTopic from "../modules/home/HomeMusicTopic";
 import HomeMusicVideo from "../modules/home/HomeMusicVideo";
 import MusicListFeed from "../modules/music/MusicListFeed";
 import MusicNCT from "../modules/music/MusicNCT";
@@ -42,7 +41,6 @@ export default function HomePage(props: HomePageProps) {
       <HomeMusicSong></HomeMusicSong>
       <Gap />
       <HeadingLine>Chủ đề hot</HeadingLine>
-      <HomeMusicTopic></HomeMusicTopic>
     </LayoutMusicPage>
   );
 }
