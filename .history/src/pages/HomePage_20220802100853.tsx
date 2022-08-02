@@ -6,7 +6,6 @@ import { LayoutMusicPage } from "../layout/LayoutMusicPage";
 import HomeBanner from "../modules/home/HomeBanner";
 import HomeMusicNew from "../modules/home/HomeMusicNew";
 import HomeMusicSong from "../modules/home/HomeMusicSong";
-import HomeMusicTop from "../modules/home/HomeMusicTop";
 import HomeMusicTopic from "../modules/home/HomeMusicTopic";
 import HomeMusicVideo from "../modules/home/HomeMusicVideo";
 import MusicListFeed from "../modules/music/MusicListFeed";
@@ -46,7 +45,6 @@ export default function HomePage(props: HomePageProps) {
       <HomeMusicTopic></HomeMusicTopic>
       <Gap />
       <HeadingLine>Top 100</HeadingLine>
-      <HomeMusicTop></HomeMusicTop>
     </LayoutMusicPage>
   );
 }
