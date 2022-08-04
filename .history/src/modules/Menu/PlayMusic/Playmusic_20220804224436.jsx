@@ -42,6 +42,9 @@ export default function Playmusic() {
   //
   // index Song
   const indexSong = useSelector((state) => state.music.indexSong);
+  // console.log("🚀 ~ file: Playmusic.jsx ~ line 45 ~ Playmusic ~ indexSong", h);
+
+  // let [indexSong, setIndexSong] = React.useState(0);
 
   // src music mp3
   const [configMusicItemMp3, setConfigMusicItemMp3] = React.useState("");

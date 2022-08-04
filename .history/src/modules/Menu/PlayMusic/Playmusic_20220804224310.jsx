@@ -9,7 +9,7 @@ import IconNextMusic from "../../../components/icon/IconNextMusic";
 import IconPauseMusic from "../../../components/icon/IconPauseMusic";
 import IconPrevMusic from "../../../components/icon/IconPrevMusic";
 import { useMusicPlay } from "../../../contexts/ContextProviderMusic";
-import { FetchDataSong, setIndexSong } from "../../../redux/MusicSlice";
+import { FetchDataSong } from "../../../redux/MusicSlice";
 import MusciItem from "../../music/MusicItem";
 import lodash from "lodash";
 import "./PlayMusic.scss";
@@ -41,7 +41,10 @@ export default function Playmusic() {
 
   //
   // index Song
-  const indexSong = useSelector((state) => state.music.indexSong);
+  const h = useSelector((state) => state.music.indexSong);
+  console.log("🚀 ~ file: Playmusic.jsx ~ line 45 ~ Playmusic ~ indexSong", h);
+
+  let [indexSong, setIndexSong] = React.useState(0);
 
   // src music mp3
   const [configMusicItemMp3, setConfigMusicItemMp3] = React.useState("");
@@ -113,7 +116,7 @@ export default function Playmusic() {
   // change Song Music next , prev
   function changeSong(dir) {
     if (dir === 1) {
-      dispatch(setIndexSong(indexSong + 1));
+      setIndexSong(indexSong + 1);
       if (indexSong >= dataSongLength.length) {
         setIndexSong(0);
       }
@@ -124,7 +127,7 @@ export default function Playmusic() {
         }, 500)
       );
     } else if (dir === -1) {
-      dispatch(setIndexSong(indexSong - 1));
+      setIndexSong(indexSong - 1);
       if (indexSong <= 0) {
         setIndexSong(dataSongLength.length - 1);
       }
