@@ -15,8 +15,6 @@ export default function MusicSong({ dataSong }: MusicSongProps) {
   const { handleClickPlay } = useMusicPlay();
 
   const dispatch = useDispatch();
-
-  // handle Click Item Song Music
   const handleItemSong = (item: MusicItemType) => {
     dispatch(setMusicSongKey(item.key));
     dispatch(setIndexSong(0));

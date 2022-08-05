@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { MusicItemType } from ".";
 import { useMusicPlay } from "../../contexts/ContextProviderMusic";
@@ -7,7 +7,7 @@ import { setIndexSong, setMusicSongKey } from "../../redux/MusicSlice";
 import MusciItem from "./MusicItem";
 import lodash from "lodash";
 interface MusicSongProps {
-  dataSong: any[];
+  dataSong: any;
 }
 
 export default function MusicSong({ dataSong }: MusicSongProps) {
@@ -15,8 +15,6 @@ export default function MusicSong({ dataSong }: MusicSongProps) {
   const { handleClickPlay } = useMusicPlay();
 
   const dispatch = useDispatch();
-
-  // handle Click Item Song Music
   const handleItemSong = (item: MusicItemType) => {
     dispatch(setMusicSongKey(item.key));
     dispatch(setIndexSong(0));

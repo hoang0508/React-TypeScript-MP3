@@ -13,8 +13,10 @@ import { FetchDataSong, setIndexSong } from "../../../redux/MusicSlice";
 import MusciItem from "../../music/MusicItem";
 import lodash from "lodash";
 import "./PlayMusic.scss";
-import usePlayMusicTimer from "../../../hooks/usePlayMusicTimer";
-import { FetchMusicKey } from "./FetchMusicKey";
+const {
+  getSong,
+  //... and many other services
+} = require("nhaccuatui-api-full");
 // export interface PlayMusicProps {}
 
 export default function Playmusic() {
@@ -86,7 +88,16 @@ export default function Playmusic() {
 
   // useEffect call data getSong key ,
   React.useEffect(() => {
-    FetchMusicKey(MusicKeyData, indexSong).then((res) => setDataMusicKey(res));
+    const FetchMusicKey = async () => {
+      if (!MusicKeyData) return null;
+      const res = await getSong(MusicKeyData[indexSong]);
+      console.log(
+        "🚀 ~ file: Playmusic.jsx ~ line 96 ~ FetchMusicKey ~ res",
+        res
+      );
+      setDataMusicKey(res);
+    };
+    FetchMusicKey();
   }, [indexSong]);
 
   // Next Music play
@@ -118,17 +129,26 @@ export default function Playmusic() {
         setIndexSong(dataSongLength.length - 1);
       }
       handleClickPause();
-      setTimeout(
-        lodash.debounce(() => {
-          handleClickPlay();
-        }, 500)
-      );
+      setTimeout(() => {
+        handleClickPlay();
+      }, 500);
     }
   }
 
-  // hooks timer play music
-  const { durationTime, remainingTime, range, rangeInput, handleChangePlay } =
-    usePlayMusicTimer(data);
+  // timer
+  const [durationTime, setDurationTime] = React.useState();
+  const [remainingTime, setRemainingTime] = React.useState();
+
+  console.log("🚀 ~ file: Playmusic.jsx ~ line 143 ~ Playmusic ~ duration");
+  React.useEffect(() => {
+    function disPlayTimer() {
+      if (durationTime === undefined) {
+        setDurationTime("0:00");
+      } else {
+        setDurationTime(refMp3.current?.duration);
+      }
+    }
+  });
   return (
     <div className="flex justify-between flex-col gap-y-[80px]">
       <div className="bg-bgColor2 py-3 px-4">
@@ -147,14 +167,7 @@ export default function Playmusic() {
           <IconDots></IconDots>
         </div>
         <div className="mt-4">
-          <input
-            type="range"
-            name="range"
-            value={rangeInput}
-            ref={range}
-            className="range"
-            onChange={() => handleChangePlay()}
-          />
+          <input type="range" name="range" id="range" className="range" />
 
           {configMusicItemMp3 && configMusicItemMp3?.streamUrls && (
             <audio
@@ -168,8 +181,8 @@ export default function Playmusic() {
             ></audio>
           )}
           <div className="flex justify-between items-center mt-2 text-xs">
-            <span>{remainingTime}</span>
             <span>{durationTime}</span>
+            <span>5:00</span>
           </div>
         </div>
         <div className="mt-5 flex justify-between items-center">

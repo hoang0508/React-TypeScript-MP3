@@ -13,8 +13,12 @@ import { FetchDataSong, setIndexSong } from "../../../redux/MusicSlice";
 import MusciItem from "../../music/MusicItem";
 import lodash from "lodash";
 import "./PlayMusic.scss";
+import { fomatTimer } from "../../../configs/FomatTimerPlay";
 import usePlayMusicTimer from "../../../hooks/usePlayMusicTimer";
-import { FetchMusicKey } from "./FetchMusicKey";
+const {
+  getSong,
+  //... and many other services
+} = require("nhaccuatui-api-full");
 // export interface PlayMusicProps {}
 
 export default function Playmusic() {
@@ -86,7 +90,16 @@ export default function Playmusic() {
 
   // useEffect call data getSong key ,
   React.useEffect(() => {
-    FetchMusicKey(MusicKeyData, indexSong).then((res) => setDataMusicKey(res));
+    const FetchMusicKey = async () => {
+      if (!MusicKeyData) return null;
+      const res = await getSong(MusicKeyData[indexSong]);
+      console.log(
+        "🚀 ~ file: Playmusic.jsx ~ line 96 ~ FetchMusicKey ~ res",
+        res
+      );
+      setDataMusicKey(res);
+    };
+    FetchMusicKey();
   }, [indexSong]);
 
   // Next Music play
@@ -98,6 +111,9 @@ export default function Playmusic() {
   const handleClickPrevMusic = () => {
     changeSong(-1);
   };
+
+  //
+  let timer;
 
   // change Song Music next , prev
   function changeSong(dir) {
@@ -127,8 +143,16 @@ export default function Playmusic() {
   }
 
   // hooks timer play music
-  const { durationTime, remainingTime, range, rangeInput, handleChangePlay } =
-    usePlayMusicTimer(data);
+
+  const { durationTime, remainingTime, range } = usePlayMusicTimer(data);
+
+  const [rangeInput, setRangeInput] = React.useState();
+  const handleChangePlay = () => {
+    if (rangeInput === undefined) {
+      setRangeInput(0);
+    }
+    setRangeInput(refMp3.current?.currentTime);
+  };
   return (
     <div className="flex justify-between flex-col gap-y-[80px]">
       <div className="bg-bgColor2 py-3 px-4">

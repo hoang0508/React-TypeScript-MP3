@@ -13,8 +13,13 @@ import { FetchDataSong, setIndexSong } from "../../../redux/MusicSlice";
 import MusciItem from "../../music/MusicItem";
 import lodash from "lodash";
 import "./PlayMusic.scss";
+import { fomatTimer } from "../../../configs/FomatTimerPlay";
 import usePlayMusicTimer from "../../../hooks/usePlayMusicTimer";
 import { FetchMusicKey } from "./FetchMusicKey";
+const {
+  getSong,
+  //... and many other services
+} = require("nhaccuatui-api-full");
 // export interface PlayMusicProps {}
 
 export default function Playmusic() {

@@ -13,8 +13,10 @@ import { FetchDataSong, setIndexSong } from "../../../redux/MusicSlice";
 import MusciItem from "../../music/MusicItem";
 import lodash from "lodash";
 import "./PlayMusic.scss";
-import usePlayMusicTimer from "../../../hooks/usePlayMusicTimer";
-import { FetchMusicKey } from "./FetchMusicKey";
+const {
+  getSong,
+  //... and many other services
+} = require("nhaccuatui-api-full");
 // export interface PlayMusicProps {}
 
 export default function Playmusic() {
@@ -86,7 +88,16 @@ export default function Playmusic() {
 
   // useEffect call data getSong key ,
   React.useEffect(() => {
-    FetchMusicKey(MusicKeyData, indexSong).then((res) => setDataMusicKey(res));
+    const FetchMusicKey = async () => {
+      if (!MusicKeyData) return null;
+      const res = await getSong(MusicKeyData[indexSong]);
+      console.log(
+        "🚀 ~ file: Playmusic.jsx ~ line 96 ~ FetchMusicKey ~ res",
+        res
+      );
+      setDataMusicKey(res);
+    };
+    FetchMusicKey();
   }, [indexSong]);
 
   // Next Music play
@@ -118,17 +129,43 @@ export default function Playmusic() {
         setIndexSong(dataSongLength.length - 1);
       }
       handleClickPause();
-      setTimeout(
-        lodash.debounce(() => {
-          handleClickPlay();
-        }, 500)
-      );
+      setTimeout(() => {
+        handleClickPlay();
+      }, 500);
     }
   }
 
-  // hooks timer play music
-  const { durationTime, remainingTime, range, rangeInput, handleChangePlay } =
-    usePlayMusicTimer(data);
+  // timer
+  const [durationTime, setDurationTime] = React.useState();
+  const [remainingTime, setRemainingTime] = React.useState();
+
+  React.useEffect(() => {
+    function disPlayTimer() {
+      if (remainingTime === undefined && durationTime === undefined) {
+        setRemainingTime("0:00");
+        setDurationTime(data?.song?.duration);
+      } else {
+        setDurationTime(fomatTimer(refMp3.current?.duration));
+        setRemainingTime(fomatTimer(refMp3.current?.currentTime));
+      }
+    }
+    disPlayTimer();
+    const timer = setInterval(disPlayTimer, 500);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [data?.song?.duration, durationTime, refMp3, remainingTime]);
+
+  const fomatTimer = (number) => {
+    const minute = Math.floor(number / 60);
+    const second = Math.floor(number - minute * 60);
+    return `${minute}:${second}`;
+  };
+
+  const [rangeInput, setRangeInput] = React.useState(0);
+  const handleChangePlay = () => {
+    setRangeInput(refMp3.current?.currentTime);
+  };
   return (
     <div className="flex justify-between flex-col gap-y-[80px]">
       <div className="bg-bgColor2 py-3 px-4">
@@ -151,7 +188,7 @@ export default function Playmusic() {
             type="range"
             name="range"
             value={rangeInput}
-            ref={range}
+            id="range"
             className="range"
             onChange={() => handleChangePlay()}
           />
