@@ -6,6 +6,7 @@ import { FetchDataSong, setIndexSong } from "../../../redux/MusicSlice";
 import MusciItem from "../../music/MusicItem";
 import lodash from "lodash";
 import "./PlayMusic.scss";
+import usePlayMusicTimer from "../../../hooks/usePlayMusicTimer";
 import { FetchMusicKey } from "./FetchMusicKey";
 import PlayMusicAction from "./PlayMusicAction";
 import PlayMusicAudio from "./PlayMusicAudio";
@@ -35,13 +36,16 @@ export default function Playmusic() {
   // index Song
   const indexSong = useSelector((state) => state.music.indexSong);
 
+  // src music mp3
+  const [configMusicItemMp3, setConfigMusicItemMp3] = React.useState("");
+
   //author song
   const authorSong =
     dataSong?.song?.artists &&
     dataSong?.song?.artists.map((art) => art.name).join(" , ");
 
   // Custom hook usePlaymusic
-  const { handleClickPlay, handleClickPause } = useMusicPlay();
+  const { handleClickPlay, refMp3, handleClickPause } = useMusicPlay();
 
   //data song length
   const dataSongLength = data?.song;
@@ -70,6 +74,7 @@ export default function Playmusic() {
   const [dataMusicKey, setDataMusicKey] = React.useState();
   // useEffect src music mp3
   React.useEffect(() => {
+    setConfigMusicItemMp3(dataSong?.song);
     setDataMusicKey(dataSong?.song);
   }, [dataSong?.song]);
 
@@ -115,6 +120,9 @@ export default function Playmusic() {
     }
   }
 
+  // hooks timer play music
+  const { durationTime, remainingTime, range, rangeInput, handleChangePlay } =
+    usePlayMusicTimer(data);
   return (
     <div className="flex justify-between flex-col gap-y-[80px]">
       <div className="bg-bgColor2 py-3 px-4">
@@ -135,7 +143,6 @@ export default function Playmusic() {
         <PlayMusicAudio
           dataSong={dataSong}
           dataMusicKey={dataMusicKey}
-          data={data}
         ></PlayMusicAudio>
         <PlayMusicAction
           handleClickNextMusic={handleClickNextMusic}

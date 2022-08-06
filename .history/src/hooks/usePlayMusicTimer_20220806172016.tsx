@@ -11,6 +11,9 @@ export default function usePlayMusicTimer(data: any) {
 
   React.useEffect(() => {
     const disPlayTimer = () => {
+      // range.current.max = refMp3.current?.duration;
+      // range.current.value = refMp3.current?.currentTime;
+
       if (remainingTime === undefined && durationTime === undefined) {
         setRemainingTime("0:00");
         setDurationTime(data?.song?.duration);
@@ -19,11 +22,12 @@ export default function usePlayMusicTimer(data: any) {
         setRemainingTime(fomatTimer(refMp3.current?.currentTime));
       }
     };
+    disPlayTimer();
+
     const timer = setInterval(disPlayTimer, 500);
     return () => {
       clearInterval(timer);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.song?.duration, durationTime, refMp3, remainingTime]);
 
   // Range Input timer

@@ -11,6 +11,9 @@ export default function usePlayMusicTimer(data: any) {
 
   React.useEffect(() => {
     const disPlayTimer = () => {
+      range.current.maxlength = refMp3.current?.duration;
+      // range.current.value = refMp3.current?.currentTime;
+
       if (remainingTime === undefined && durationTime === undefined) {
         setRemainingTime("0:00");
         setDurationTime(data?.song?.duration);

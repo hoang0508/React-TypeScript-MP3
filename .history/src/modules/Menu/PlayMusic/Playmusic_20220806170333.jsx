@@ -6,6 +6,7 @@ import { FetchDataSong, setIndexSong } from "../../../redux/MusicSlice";
 import MusciItem from "../../music/MusicItem";
 import lodash from "lodash";
 import "./PlayMusic.scss";
+import usePlayMusicTimer from "../../../hooks/usePlayMusicTimer";
 import { FetchMusicKey } from "./FetchMusicKey";
 import PlayMusicAction from "./PlayMusicAction";
 import PlayMusicAudio from "./PlayMusicAudio";
@@ -115,6 +116,9 @@ export default function Playmusic() {
     }
   }
 
+  // hooks timer play music
+  const { durationTime, remainingTime, range, rangeInput, handleChangePlay } =
+    usePlayMusicTimer(data);
   return (
     <div className="flex justify-between flex-col gap-y-[80px]">
       <div className="bg-bgColor2 py-3 px-4">
@@ -135,7 +139,6 @@ export default function Playmusic() {
         <PlayMusicAudio
           dataSong={dataSong}
           dataMusicKey={dataMusicKey}
-          data={data}
         ></PlayMusicAudio>
         <PlayMusicAction
           handleClickNextMusic={handleClickNextMusic}
