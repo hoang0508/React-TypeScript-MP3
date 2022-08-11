@@ -7,7 +7,6 @@ const {
   getSong,
   getPlaylists,
   getChart,
-  getPlaylistDetail,
   //... and many other services
 } = require("nhaccuatui-api-full");
 function App() {

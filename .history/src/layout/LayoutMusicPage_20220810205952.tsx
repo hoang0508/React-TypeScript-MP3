@@ -13,9 +13,9 @@ export function LayoutMusicPage({ children }: ILayoutMusicPageprops) {
       <Sidebar></Sidebar>
       <div className="pl-[200px]">
         <div className="flex">
-          <div className="w-[72%]">
-            <div className="border-b border-b-borderColor py-6 px-8">
-              {children}
+          <div className="">
+            <div className="border-b border-b-borderColor">
+              <div className="container">{children}</div>
             </div>
             <Footer />
           </div>

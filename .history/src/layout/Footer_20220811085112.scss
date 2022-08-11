@@ -1,0 +1,26 @@
+.footer {
+  &-link {
+    position: relative;
+    padding-right: 10px;
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      background-color: #eeee;
+      width: 1px;
+      height: 100%;
+      margin-left: 10px;
+    }
+  }
+  &-note {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 100rem;
+      background-color: #9999;
+    }
+  }
+}

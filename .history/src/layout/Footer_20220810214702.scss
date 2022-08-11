@@ -1,0 +1,16 @@
+.footer {
+  &-link {
+    position: relative;
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      background-color: #eeee;
+      width: 1px;
+      height: 100%;
+      margin-left: 10px;
+    }
+    &:not(:first-child) {
+      padding-right: 10px;
+    }
+  }
+}

@@ -7,13 +7,12 @@ const {
   getSong,
   getPlaylists,
   getChart,
-  getPlaylistDetail,
   //... and many other services
 } = require("nhaccuatui-api-full");
 function App() {
   useEffect(() => {
     (async () => {
-      const data = await getPlaylistDetail("5Cgvim9fU9YQ");
+      const data = await getPlaylists("5Cgvim9fU9YQ");
       console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
     })();
   }, []);
