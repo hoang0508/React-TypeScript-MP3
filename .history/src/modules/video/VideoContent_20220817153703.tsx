@@ -7,10 +7,6 @@ export interface VideoContentProps {}
 
 export default function VideoContent(props: VideoContentProps) {
   const { dataVideo } = useSelector((state: any) => state.music);
-  console.log(
-    "🚀 ~ file: VideoContent.tsx ~ line 10 ~ VideoContent ~ dataVideo",
-    dataVideo
-  );
   if (!dataVideo.video) return null;
   const { title, artists, dateCreate } = dataVideo?.video;
   return (

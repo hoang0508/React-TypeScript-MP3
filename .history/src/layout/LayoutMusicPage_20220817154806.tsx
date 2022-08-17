@@ -32,7 +32,7 @@ export function LayoutMusicPage({
             </div>
           )}
           {videoList && (
-            <div className="w-[320px] h-[500px] overflow-y-scroll py-7 pr-4 custom-scroll">
+            <div className="w-[320px] min-h-screen fixed top-0 right-0 bottom-0 border-l border-borderColor px-7 py-7">
               <VideoList></VideoList>
             </div>
           )}

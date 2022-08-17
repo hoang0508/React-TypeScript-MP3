@@ -18,16 +18,16 @@ body::-webkit-scrollbar {
   width: 8px;
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: #1fa2ff;
-  border-radius: 8px;
-}
-
 .custom-scroll::-webkit-scrollbar {
   width: 2px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #1fa2ff;
+  border-radius: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
   background-color: #1fa2ff;
   border-radius: 8px;
 }

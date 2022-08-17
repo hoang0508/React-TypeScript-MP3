@@ -31,11 +31,7 @@ export function LayoutMusicPage({
               <PlayMusic></PlayMusic>
             </div>
           )}
-          {videoList && (
-            <div className="w-[320px] h-[500px] overflow-y-scroll py-7 pr-4 custom-scroll">
-              <VideoList></VideoList>
-            </div>
-          )}
+          {videoList && <VideoList></VideoList>}
         </div>
       </div>
     </>

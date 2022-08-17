@@ -15,7 +15,7 @@ export default function VideoMusic(props: VideoMusicProps) {
   const booleanToggle = isPlayer?.isMyPlaylist;
 
   return (
-    <div className="player-wrapper cursor-pointer mb-6">
+    <div className="player-wrapper cursor-pointer mb-10">
       <video
         className="react-player"
         width="100%"

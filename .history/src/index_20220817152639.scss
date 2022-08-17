@@ -23,15 +23,6 @@ body::-webkit-scrollbar-thumb {
   border-radius: 8px;
 }
 
-.custom-scroll::-webkit-scrollbar {
-  width: 2px;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background-color: #1fa2ff;
-  border-radius: 8px;
-}
-
 .container {
   max-width: 660px;
   margin: 0 auto;
