@@ -8,9 +8,9 @@ import FormGroup from "../components/common/FormGroup";
 import IconEyeToggle from "../components/icon/IconEyeToggle";
 import { Input } from "../components/input";
 import { Label } from "../components/label";
+import { FaFacebookF } from "react-icons/fa";
 import useValueToggle from "../hooks/useValueToggle";
 import LayoutAuthen from "./LayoutAuthen";
-import AuthenSocial from "./AuthenSocial";
 
 const AuthenSignUp = () => {
   // useSelector isShowSignUp
@@ -115,7 +115,14 @@ const AuthenSignUp = () => {
             </div>
             <div className="flex items-center flex-1">
               <span className="mr-3">Hoặc</span>
-              <AuthenSocial />
+              <div className="flex items-center gap-x-3 cursor-pointer">
+                <span className="w-10 h-10 bg-bgColor2 rounded-full flex items-center justify-center">
+                  <FaFacebookF />
+                </span>
+                <span className="w-10 h-10 bg-bgColor2 rounded-full flex items-center justify-center">
+                  <img src="/google.png" alt="" />
+                </span>
+              </div>
             </div>
           </div>
         </LayoutAuthen>

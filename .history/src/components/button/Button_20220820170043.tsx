@@ -14,7 +14,7 @@ export default function Button({
   isLoading,
 }: Buttonprops) {
   const child = isLoading ? (
-    <div className="w-6 h-6 border-4 border-white rounded-full animate-spin border-t-transparent"></div>
+    <div className="w-5 h-5 border-4 border-white rounded-full animate-spin border-t-transparent"></div>
   ) : (
     children
   );
