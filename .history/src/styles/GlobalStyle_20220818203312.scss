@@ -1,0 +1,21 @@
+.text-field {
+  position: relative;
+}
+
+.text-field label {
+  display: inline-block;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding: 1px 5px;
+  font-size: 12px;
+  transform: translateY(-50%);
+  background-color: transparent;
+}
+
+.text-field input {
+  background-color: transparent;
+  color: white;
+}

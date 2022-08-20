@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply font-primary text-sm font-normal mx-auto bg-bgColor text-text1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    max-width: 1440px;
+  }
+  input {
+    @apply outline-none;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #1fa2ff;
+  border-radius: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 2px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #1fa2ff;
+  border-radius: 8px;
+}
+
+.container {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper .swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: 10px;
+  left: auto;
+  background-color: rgba(244, 246, 248, 0.02) !important;
+  color: #fff;
+  font-weight: 700;
+}
+
+.swiper .swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: 10px;
+  right: auto;
+  color: #fff;
+  font-weight: 700;
+}
+
+.music-list .swiper-slide {
+  width: 177px !important;
+  height: auto;
+}
+
+.player-wrapper {
+  height: 0;
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.music-dots {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 100rem;
+    background-color: #9999;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+//
+.login-link {
+  position: relative;
+  padding-right: 15px;
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #eeee;
+    width: 1px;
+    height: 100%;
+  }
+}
