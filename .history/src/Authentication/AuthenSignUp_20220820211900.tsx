@@ -20,23 +20,7 @@ interface IFormInputs {
   password: any;
 }
 
-const schema = yup
-  .object({
-    fullname: yup.string().required("Tên bạn không được để trống!!"),
-    email: yup
-      .string()
-      .email("Bạn cần nhập đúng địa chỉ email!")
-      .required("Email không được để trống!!"),
-    password: yup
-      .string()
-      .min(8, "Mật khẩu cần 8 kí tự")
-      .required("Mật khẩu không được để trống!!")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, 1 chữ in hoa, One Lowercase 1 chữ in thường, 1 số và 1 kí tự đặc biệt"
-      ),
-  })
-  .required();
+const schema = yup.object({}).required();
 
 const AuthenSignUp = () => {
   // useSelector isShowSignUp
@@ -52,10 +36,6 @@ const AuthenSignUp = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleAuthSignUp = (values: IFormInputs) => {
-    console.log(values);
-  };
-
   // useHook (useValueToggle)
   // show password useState
   const {
@@ -65,13 +45,11 @@ const AuthenSignUp = () => {
   // checked checkbox
   const { valueToggle: acceptTerm, handleValueToggle: handleToggleTerm } =
     useValueToggle();
-
-  const { email, fullname, password } = errors;
   return (
     <>
       {isShowSignUp && (
         <LayoutAuthen heading="Đăng ký">
-          <form onSubmit={handleSubmit(handleAuthSignUp)} className="py-7 px-4">
+          <div className="py-7 px-4">
             <FormGroup>
               <Label className="bg-bgColor" name="name">
                 Tên của bạn
@@ -80,8 +58,7 @@ const AuthenSignUp = () => {
                 name="fullname"
                 control={control}
                 type="text"
-                placeholder="Tên của bạn..."
-                error={fullname?.message}
+                placeholder="Mời bạn nhập tên..."
               />
             </FormGroup>
             <FormGroup>
@@ -92,8 +69,7 @@ const AuthenSignUp = () => {
                 name="email"
                 control={control}
                 type="text"
-                placeholder="Email của bạn..."
-                error={email?.message}
+                placeholder="Mời bạn nhập email..."
               />
             </FormGroup>
             <FormGroup>
@@ -105,7 +81,6 @@ const AuthenSignUp = () => {
                 control={control}
                 type={isShowTogglePassowrd ? "text" : "password"}
                 placeholder="Đặt mật khẩu..."
-                error={password?.message}
               >
                 <span className="cursor-pointer">
                   <IconEyeToggle
@@ -139,7 +114,7 @@ const AuthenSignUp = () => {
             >
               Đăng ký
             </Button>
-          </form>
+          </div>
           <div className="bg-bgColor2 px-4 py-3 flex">
             <div className="flex items-center gap-x-4 flex-1">
               <span>Đăng nhập NCT ID:</span>

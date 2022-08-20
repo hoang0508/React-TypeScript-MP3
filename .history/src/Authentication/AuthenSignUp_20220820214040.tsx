@@ -27,14 +27,7 @@ const schema = yup
       .string()
       .email("Bạn cần nhập đúng địa chỉ email!")
       .required("Email không được để trống!!"),
-    password: yup
-      .string()
-      .min(8, "Mật khẩu cần 8 kí tự")
-      .required("Mật khẩu không được để trống!!")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, 1 chữ in hoa, One Lowercase 1 chữ in thường, 1 số và 1 kí tự đặc biệt"
-      ),
+    password: yup.string().required("Mật khẩu không được để trống!!").min(8),
   })
   .required();
 
@@ -65,8 +58,6 @@ const AuthenSignUp = () => {
   // checked checkbox
   const { valueToggle: acceptTerm, handleValueToggle: handleToggleTerm } =
     useValueToggle();
-
-  const { email, fullname, password } = errors;
   return (
     <>
       {isShowSignUp && (
@@ -80,8 +71,7 @@ const AuthenSignUp = () => {
                 name="fullname"
                 control={control}
                 type="text"
-                placeholder="Tên của bạn..."
-                error={fullname?.message}
+                placeholder="Mời bạn nhập tên..."
               />
             </FormGroup>
             <FormGroup>
@@ -92,8 +82,7 @@ const AuthenSignUp = () => {
                 name="email"
                 control={control}
                 type="text"
-                placeholder="Email của bạn..."
-                error={email?.message}
+                placeholder="Mời bạn nhập email..."
               />
             </FormGroup>
             <FormGroup>
@@ -105,7 +94,6 @@ const AuthenSignUp = () => {
                 control={control}
                 type={isShowTogglePassowrd ? "text" : "password"}
                 placeholder="Đặt mật khẩu..."
-                error={password?.message}
               >
                 <span className="cursor-pointer">
                   <IconEyeToggle

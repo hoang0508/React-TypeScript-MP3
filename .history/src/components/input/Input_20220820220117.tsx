@@ -7,7 +7,7 @@ interface InputProps {
   type: string;
   children?: any;
   control: any;
-  error: string | any;
+  // error: string;
 }
 
 export default function Input({
@@ -16,7 +16,6 @@ export default function Input({
   type,
   control,
   placeholder,
-  error = "",
 }: InputProps) {
   const { field } = useController({
     defaultValue: "",
@@ -24,21 +23,17 @@ export default function Input({
     control,
   });
   return (
-    <div className="">
+    <div className="relative">
       <input
         type={type}
-        placeholder={error.length <= 0 ? placeholder : ""}
+        placeholder={placeholder}
         id={name}
         {...field}
-        className={`w-full py-4 px-3 border bg-transparent rounded-lg ${
-          error ? "border-primary" : "border-borderColor"
-        }`}
+        className="w-full py-4 px-3 border border-borderColor bg-transparent rounded-lg"
       />
-      {error && error.length > 0 && (
-        <span className="absolute top-2/4 -translate-y-2/4 left-3 text-xs font-medium text-error">
-          {error}
-        </span>
-      )}
+      <span className="absolute top-2/4 -translate-y-2/4 left-4 font-medium text-error">
+        bạn cần điền
+      </span>
       {children && (
         <span className="absolute right-4 top-2/4 -translate-y-2/4">
           {children}

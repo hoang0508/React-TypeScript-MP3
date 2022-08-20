@@ -35,7 +35,7 @@ export default function Input({
         }`}
       />
       {error && error.length > 0 && (
-        <span className="absolute top-2/4 -translate-y-2/4 left-3 text-xs font-medium text-error">
+        <span className="absolute top-2/4 -translate-y-2/4 left-3 font-medium text-error">
           {error}
         </span>
       )}
