@@ -30,7 +30,7 @@ export default function Input({
         placeholder={error.length <= 0 ? placeholder : ""}
         id={name}
         {...field}
-        className={`w-full py-4 px-3 border bg-transparent rounded-lg focus:border-primary ${
+        className={`w-full py-4 px-3 border bg-transparent rounded-lg ${
           error ? "border-primary" : "border-borderColor"
         }`}
       />

@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Button } from "../components/button";
 import Checkbox from "../components/checkbox/Checkbox";
 import FormGroup from "../components/common/FormGroup";
 import IconEyeToggle from "../components/icon/IconEyeToggle";
@@ -12,9 +13,7 @@ import LayoutAuthen from "./LayoutAuthen";
 import AuthenSocial from "./AuthenSocial";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { setIsShowSignUp } from "../redux/AuthenSlice";
 import ButtonAuthen from "../components/button/ButtonAuthen";
-import { Dialog } from "@material-ui/core";
 
 interface IFormInputs {
   fullname: string;
@@ -22,7 +21,6 @@ interface IFormInputs {
   password: any;
 }
 
-// validation yup react hook form
 const schema = yup
   .object({
     fullname: yup.string().required("Tên bạn không được để trống!!"),
@@ -45,7 +43,7 @@ const AuthenSignUp = () => {
   // useSelector isShowSignUp
   const { isShowSignUp } = useSelector((state: any) => state.authen);
 
-  //react hook form
+  // hook form
   const {
     handleSubmit,
     formState: { errors },
@@ -69,24 +67,11 @@ const AuthenSignUp = () => {
   const { valueToggle: acceptTerm, handleValueToggle: handleToggleTerm } =
     useValueToggle();
 
-  // error form
   const { email, fullname, password } = errors;
-  //
-  // dispatch
-  const dispatch = useDispatch();
-  // handle Close
-  const handleCloseSignUp = () => {
-    dispatch(setIsShowSignUp(false));
-  };
-
   return (
     <>
-      <Dialog
-        onClose={handleCloseSignUp}
-        open={isShowSignUp}
-        className="cursor-pointer"
-      >
-        <LayoutAuthen onClick={handleCloseSignUp} heading="Đăng ký">
+      {isShowSignUp && (
+        <LayoutAuthen heading="Đăng ký">
           <form onSubmit={handleSubmit(handleAuthSignUp)} className="py-7 px-4">
             <FormGroup>
               <Label className="bg-bgColor" name="name">
@@ -168,7 +153,7 @@ const AuthenSignUp = () => {
             </div>
           </div>
         </LayoutAuthen>
-      </Dialog>
+      )}
     </>
   );
 };

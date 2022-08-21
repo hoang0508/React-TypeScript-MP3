@@ -5,14 +5,17 @@ interface ILayoutAuthenProps {
   children: any;
   heading: string;
   onClick: () => void;
+  visible?: boolean;
 }
 
 export default function LayoutAuthen({
   children,
   heading,
+  visible,
   onClick,
 }: ILayoutAuthenProps) {
   return (
+    // <div className="flex justify-center items-center bg-[rgba(0,0,0,0.6)]">
     <div className="bg-bgColor  rounded shadow-lg">
       <div className="py-3 border-b border-b-borderColor flex justify-center items-center relative">
         <h3 className="font-bold text-center">{heading}</h3>
@@ -22,5 +25,6 @@ export default function LayoutAuthen({
       </div>
       {children}
     </div>
+    // </div>
   );
 }

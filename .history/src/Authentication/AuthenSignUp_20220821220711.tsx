@@ -12,6 +12,7 @@ import LayoutAuthen from "./LayoutAuthen";
 import AuthenSocial from "./AuthenSocial";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { CSSTransition } from "react-transition-group";
 import { setIsShowSignUp } from "../redux/AuthenSlice";
 import ButtonAuthen from "../components/button/ButtonAuthen";
 import { Dialog } from "@material-ui/core";
@@ -69,7 +70,6 @@ const AuthenSignUp = () => {
   const { valueToggle: acceptTerm, handleValueToggle: handleToggleTerm } =
     useValueToggle();
 
-  // error form
   const { email, fullname, password } = errors;
   //
   // dispatch

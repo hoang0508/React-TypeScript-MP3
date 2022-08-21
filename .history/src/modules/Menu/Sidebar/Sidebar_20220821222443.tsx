@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import AuthenSignIn from "../../../Authentication/AuthenSignIn";
 import AuthenSignUp from "../../../Authentication/AuthenSignUp";
 import { Button } from "../../../components/button";
 import {
@@ -88,7 +87,6 @@ export function Sidebar(props: Sidebarprops) {
           ))}
       </div>
       <AuthenSignUp />
-      <AuthenSignIn />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import AuthenSignIn from "../../../Authentication/AuthenSignIn";
+import { Link, NavLink } from "react-router-dom";
 import AuthenSignUp from "../../../Authentication/AuthenSignUp";
 import { Button } from "../../../components/button";
 import {
@@ -10,7 +9,7 @@ import {
   IconSearch,
   Iconsetting,
 } from "../../../components/icon";
-import { setIsShowSignIn, setIsShowSignUp } from "../../../redux/AuthenSlice";
+import { setIsShowSignUp } from "../../../redux/AuthenSlice";
 import "./Sidebar.scss";
 
 export interface Sidebarprops {}
@@ -38,17 +37,11 @@ const SidebarLinks = [
 
 export function Sidebar(props: Sidebarprops) {
   const linkClass = `flex items-center gap-x-3 mb-4 relative font-medium pl-3`;
-  // dispatch authen signup
+  // dispatch
   const dispatch = useDispatch();
   const handleAuthenSignUp = () => {
     dispatch(setIsShowSignUp(true));
   };
-
-  const handleAuthenSignIn = () => {
-    dispatch(setIsShowSignIn(true));
-    console.log("kkk");
-  };
-
   return (
     <>
       <div className="max-w-[200px] w-full h-full fixed top-0 left-0 z-20 border-r-2 border-borderColor">
@@ -66,8 +59,8 @@ export function Sidebar(props: Sidebarprops) {
           </Button>
         </div>
         <div className="flex items-center bg-bgColor2 justify-between my-4 p-3 text-sm">
-          <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
-            <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
+          <div className="flex gap-x-2 text-xs login-link cursor-pointer">
+            <span>Đăng nhập</span>
             <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
           </div>
           <Iconsetting className="w-4 h-4" />
@@ -88,7 +81,6 @@ export function Sidebar(props: Sidebarprops) {
           ))}
       </div>
       <AuthenSignUp />
-      <AuthenSignIn />
     </>
   );
 }

@@ -12,9 +12,9 @@ import LayoutAuthen from "./LayoutAuthen";
 import AuthenSocial from "./AuthenSocial";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { setIsShowSignUp } from "../redux/AuthenSlice";
 import ButtonAuthen from "../components/button/ButtonAuthen";
-import { Dialog } from "@material-ui/core";
+import { setIsShowSignUp } from "../redux/AuthenSlice";
+import { CSSTransition } from "react-transition-group";
 
 interface IFormInputs {
   fullname: string;
@@ -69,7 +69,6 @@ const AuthenSignUp = () => {
   const { valueToggle: acceptTerm, handleValueToggle: handleToggleTerm } =
     useValueToggle();
 
-  // error form
   const { email, fullname, password } = errors;
   //
   // dispatch
@@ -81,12 +80,14 @@ const AuthenSignUp = () => {
 
   return (
     <>
-      <Dialog
-        onClose={handleCloseSignUp}
-        open={isShowSignUp}
-        className="cursor-pointer"
+      <CSSTransition
+        in={isShowSignUp}
+        timeout={250}
+        classNames="zoom"
+        unmountOnExit
       >
-        <LayoutAuthen onClick={handleCloseSignUp} heading="Đăng ký">
+        kkk
+        {/* <LayoutAuthen onClick={handleCloseSignUp} heading="Đăng ký">
           <form onSubmit={handleSubmit(handleAuthSignUp)} className="py-7 px-4">
             <FormGroup>
               <Label className="bg-bgColor" name="name">
@@ -167,8 +168,8 @@ const AuthenSignUp = () => {
               <AuthenSocial />
             </div>
           </div>
-        </LayoutAuthen>
-      </Dialog>
+        </LayoutAuthen> */}
+      </CSSTransition>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Checkbox from "../components/checkbox/Checkbox";
 import FormGroup from "../components/common/FormGroup";
@@ -12,9 +12,7 @@ import LayoutAuthen from "./LayoutAuthen";
 import AuthenSocial from "./AuthenSocial";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { setIsShowSignUp } from "../redux/AuthenSlice";
 import ButtonAuthen from "../components/button/ButtonAuthen";
-import { Dialog } from "@material-ui/core";
 
 interface IFormInputs {
   fullname: string;
@@ -69,24 +67,11 @@ const AuthenSignUp = () => {
   const { valueToggle: acceptTerm, handleValueToggle: handleToggleTerm } =
     useValueToggle();
 
-  // error form
   const { email, fullname, password } = errors;
-  //
-  // dispatch
-  const dispatch = useDispatch();
-  // handle Close
-  const handleCloseSignUp = () => {
-    dispatch(setIsShowSignUp(false));
-  };
-
   return (
     <>
-      <Dialog
-        onClose={handleCloseSignUp}
-        open={isShowSignUp}
-        className="cursor-pointer"
-      >
-        <LayoutAuthen onClick={handleCloseSignUp} heading="Đăng ký">
+      {isShowSignUp && (
+        <LayoutAuthen heading="Đăng ký">
           <form onSubmit={handleSubmit(handleAuthSignUp)} className="py-7 px-4">
             <FormGroup>
               <Label className="bg-bgColor" name="name">
@@ -168,7 +153,7 @@ const AuthenSignUp = () => {
             </div>
           </div>
         </LayoutAuthen>
-      </Dialog>
+      )}
     </>
   );
 };
