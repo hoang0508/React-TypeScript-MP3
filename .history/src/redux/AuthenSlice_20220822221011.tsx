@@ -9,6 +9,10 @@ export const fetchDataUser: any = createAsyncThunk("user", async () => {
       resolve(user);
     });
   });
+  console.log(
+    "🚀 ~ file: AuthenSlice.tsx ~ line 14 ~ fetchDataUser ~ response",
+    response
+  );
   return response;
 });
 

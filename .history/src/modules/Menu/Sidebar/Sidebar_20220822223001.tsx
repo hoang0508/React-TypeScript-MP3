@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AuthenSignIn from "../../../Authentication/AuthenSignIn";
 import AuthenSignUp from "../../../Authentication/AuthenSignUp";
@@ -59,12 +59,6 @@ export function Sidebar(props: Sidebarprops) {
     dispatch(fetchDataUser());
   }, [dispatch]);
 
-  const { userInfo } = useSelector((state: any) => state.authen);
-  console.log(
-    "🚀 ~ file: Sidebar.tsx ~ line 63 ~ Sidebar ~ userInfo",
-    userInfo
-  );
-
   return (
     <>
       <div className="max-w-[200px] w-full h-full fixed top-0 left-0 z-20 border-r-2 border-borderColor">
@@ -82,21 +76,18 @@ export function Sidebar(props: Sidebarprops) {
           </Button>
         </div>
         <div className="flex items-center bg-bgColor2 justify-between my-4 p-3 text-sm">
-          {userInfo ? (
-            <div className="flex items-center gap-x-2">
-              <img
-                src="/avatar-playlist.png"
-                className="w-6 h-6 object-cover "
-                alt=""
-              />{" "}
-              <span className="text-white">{userInfo?.displayName}</span>
-            </div>
-          ) : (
-            <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
-              <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
-              <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
-            </div>
-          )}
+          {/* <div className="flex items-center gap-x-2">
+            <img
+              src="/avatar-playlist.png"
+              className="w-6 h-6 object-cover "
+              alt=""
+            />{" "}
+            <span className="text-white">hoang0508</span>
+          </div> */}
+          <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
+            <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
+            <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
+          </div>
           <Iconsetting className="w-4 h-4" />
         </div>
         {SidebarLinks &&

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AuthenSignIn from "../../../Authentication/AuthenSignIn";
 import AuthenSignUp from "../../../Authentication/AuthenSignUp";
@@ -10,11 +10,7 @@ import {
   IconSearch,
   Iconsetting,
 } from "../../../components/icon";
-import {
-  fetchDataUser,
-  setIsShowSignIn,
-  setIsShowSignUp,
-} from "../../../redux/AuthenSlice";
+import { setIsShowSignIn, setIsShowSignUp } from "../../../redux/AuthenSlice";
 import "./Sidebar.scss";
 
 export interface Sidebarprops {}
@@ -44,26 +40,14 @@ export function Sidebar(props: Sidebarprops) {
   const linkClass = `flex items-center gap-x-3 mb-4 relative font-medium pl-3`;
   // dispatch authen signup
   const dispatch = useDispatch();
-  // popup signup
   const handleAuthenSignUp = () => {
     dispatch(setIsShowSignUp(true));
   };
 
-  // popup signin
   const handleAuthenSignIn = () => {
     dispatch(setIsShowSignIn(true));
+    console.log("kkk");
   };
-
-  // hiển thị userInfo
-  React.useEffect(() => {
-    dispatch(fetchDataUser());
-  }, [dispatch]);
-
-  const { userInfo } = useSelector((state: any) => state.authen);
-  console.log(
-    "🚀 ~ file: Sidebar.tsx ~ line 63 ~ Sidebar ~ userInfo",
-    userInfo
-  );
 
   return (
     <>
@@ -82,21 +66,13 @@ export function Sidebar(props: Sidebarprops) {
           </Button>
         </div>
         <div className="flex items-center bg-bgColor2 justify-between my-4 p-3 text-sm">
-          {userInfo ? (
-            <div className="flex items-center gap-x-2">
-              <img
-                src="/avatar-playlist.png"
-                className="w-6 h-6 object-cover "
-                alt=""
-              />{" "}
-              <span className="text-white">{userInfo?.displayName}</span>
-            </div>
-          ) : (
-            <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
-              <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
-              <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
-            </div>
-          )}
+          <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
+            <span>
+              Chào bạn!! <span>hoang0508</span>
+            </span>
+            {/* <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
+            <span onClick={() => handleAuthenSignUp()}>Đăng ký</span> */}
+          </div>
           <Iconsetting className="w-4 h-4" />
         </div>
         {SidebarLinks &&

@@ -82,21 +82,18 @@ export function Sidebar(props: Sidebarprops) {
           </Button>
         </div>
         <div className="flex items-center bg-bgColor2 justify-between my-4 p-3 text-sm">
-          {userInfo ? (
-            <div className="flex items-center gap-x-2">
-              <img
-                src="/avatar-playlist.png"
-                className="w-6 h-6 object-cover "
-                alt=""
-              />{" "}
-              <span className="text-white">{userInfo?.displayName}</span>
-            </div>
-          ) : (
-            <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
-              <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
-              <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
-            </div>
-          )}
+          {/* <div className="flex items-center gap-x-2">
+            <img
+              src="/avatar-playlist.png"
+              className="w-6 h-6 object-cover "
+              alt=""
+            />{" "}
+            <span className="text-white">hoang0508</span>
+          </div> */}
+          <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
+            <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
+            <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
+          </div>
           <Iconsetting className="w-4 h-4" />
         </div>
         {SidebarLinks &&

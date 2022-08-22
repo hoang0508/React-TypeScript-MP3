@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebases/Firebase-config";
 
-// fetch user
-export const fetchDataUser: any = createAsyncThunk("user", async () => {
+export const fetchDataUse = createAsyncThunk("user", async () => {
   const response = await new Promise((resolve, reject) => {
     onAuthStateChanged(auth, (user) => {
       resolve(user);
@@ -17,7 +16,6 @@ const AuthenSlice = createSlice({
   initialState: {
     isShowSignUp: false,
     isShowSignIn: false,
-    userInfo: {},
   },
   reducers: {
     setIsShowSignUp: (state, action) => ({
@@ -28,11 +26,6 @@ const AuthenSlice = createSlice({
       ...state,
       isShowSignIn: action.payload,
     }),
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchDataUser.fulfilled, (state, action) => {
-      state.userInfo = action.payload;
-    });
   },
 });
 export const { setIsShowSignUp, setIsShowSignIn } = AuthenSlice.actions;

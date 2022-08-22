@@ -29,10 +29,7 @@ interface IFormInputs {
 // validation yup react hook form
 const schema = yup
   .object({
-    fullname: yup
-      .string()
-      .max(10, "Bạn được phép nhập 10 kí tự")
-      .required("Tên bạn không được để trống!!"),
+    fullname: yup.string().required("Tên bạn không được để trống!!"),
     email: yup
       .string()
       .email("Bạn cần nhập đúng địa chỉ email!")
@@ -70,6 +67,7 @@ const AuthenSignUp = () => {
 
   // handle Auth SignUp
   const handleAuthSignUp = async (values: IFormInputs) => {
+    if (!isValid) return;
     try {
       // Đăng ký tài khoản
       await createUserWithEmailAndPassword(auth, values.email, values.password);
@@ -89,6 +87,7 @@ const AuthenSignUp = () => {
         email: "",
         password: "",
       });
+
       toast.success("Bạn đã đăng ký thành công tài khoản!!");
       dispatch(setIsShowSignUp(false));
     } catch (error) {
@@ -130,11 +129,7 @@ const AuthenSignUp = () => {
         className="cursor-pointer"
       >
         <LayoutAuthen onClick={handleCloseSignUp} heading="Đăng ký">
-          <form
-            onSubmit={handleSubmit(handleAuthSignUp)}
-            className="py-7 px-4"
-            autoComplete="off"
-          >
+          <form onSubmit={handleSubmit(handleAuthSignUp)} className="py-7 px-4">
             <FormGroup>
               <Label className="bg-bgColor" name="name">
                 Tên của bạn
@@ -196,6 +191,7 @@ const AuthenSignUp = () => {
                 </p>
               </Checkbox>
             </div>
+            <button>Đăng ký</button>
             <ButtonAuthen isLoading={isSubmitting}>Đăng ký</ButtonAuthen>
           </form>
           <div className="bg-bgColor2 px-4 py-3 flex">

@@ -62,6 +62,7 @@ export default function AuthenSignIn(props: IAuthenSignInProps) {
   });
 
   const handleAuthSignIn = async (values: IFormInputs) => {
+    if (!isValid) return;
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       reset({

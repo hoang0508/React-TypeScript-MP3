@@ -46,6 +46,7 @@ const schema = yup
 export default function AuthenSignIn(props: IAuthenSignInProps) {
   // useSelector isShowSignUp
   const { isShowSignIn } = useSelector((state: any) => state.authen);
+
   //react hook form
   const {
     handleSubmit,
@@ -62,6 +63,7 @@ export default function AuthenSignIn(props: IAuthenSignInProps) {
   });
 
   const handleAuthSignIn = async (values: IFormInputs) => {
+    if (!isValid) return;
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       reset({
@@ -107,11 +109,7 @@ export default function AuthenSignIn(props: IAuthenSignInProps) {
       className="cursor-pointer"
     >
       <LayoutAuthen heading="Đăng nhập" onClick={handleCloseSignIn}>
-        <form
-          onSubmit={handleSubmit(handleAuthSignIn)}
-          className="py-7 px-4"
-          autoComplete="off"
-        >
+        <form onSubmit={handleSubmit(handleAuthSignIn)} className="py-7 px-4">
           <FormGroup>
             <Label className="bg-bgColor" name="email">
               Email

@@ -70,6 +70,7 @@ const AuthenSignUp = () => {
 
   // handle Auth SignUp
   const handleAuthSignUp = async (values: IFormInputs) => {
+    if (!isValid) return;
     try {
       // Đăng ký tài khoản
       await createUserWithEmailAndPassword(auth, values.email, values.password);

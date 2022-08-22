@@ -3,12 +3,16 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebases/Firebase-config";
 
 // fetch user
-export const fetchDataUser: any = createAsyncThunk("user", async () => {
+export const fetchDataUser = createAsyncThunk("user", async () => {
   const response = await new Promise((resolve, reject) => {
     onAuthStateChanged(auth, (user) => {
       resolve(user);
     });
   });
+  console.log(
+    "🚀 ~ file: AuthenSlice.tsx ~ line 14 ~ fetchDataUser ~ response",
+    response
+  );
   return response;
 });
 
@@ -28,11 +32,6 @@ const AuthenSlice = createSlice({
       ...state,
       isShowSignIn: action.payload,
     }),
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchDataUser.fulfilled, (state, action) => {
-      state.userInfo = action.payload;
-    });
   },
 });
 export const { setIsShowSignUp, setIsShowSignIn } = AuthenSlice.actions;

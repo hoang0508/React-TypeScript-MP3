@@ -9,6 +9,10 @@ export const fetchDataUser: any = createAsyncThunk("user", async () => {
       resolve(user);
     });
   });
+  console.log(
+    "🚀 ~ file: AuthenSlice.tsx ~ line 14 ~ fetchDataUser ~ response",
+    response
+  );
   return response;
 });
 
@@ -28,11 +32,6 @@ const AuthenSlice = createSlice({
       ...state,
       isShowSignIn: action.payload,
     }),
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchDataUser.fulfilled, (state, action) => {
-      state.userInfo = action.payload;
-    });
   },
 });
 export const { setIsShowSignUp, setIsShowSignIn } = AuthenSlice.actions;

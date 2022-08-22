@@ -29,10 +29,7 @@ interface IFormInputs {
 // validation yup react hook form
 const schema = yup
   .object({
-    fullname: yup
-      .string()
-      .max(10, "Bạn được phép nhập 10 kí tự")
-      .required("Tên bạn không được để trống!!"),
+    fullname: yup.string().required("Tên bạn không được để trống!!"),
     email: yup
       .string()
       .email("Bạn cần nhập đúng địa chỉ email!")
@@ -70,6 +67,7 @@ const AuthenSignUp = () => {
 
   // handle Auth SignUp
   const handleAuthSignUp = async (values: IFormInputs) => {
+    if (!isValid) return;
     try {
       // Đăng ký tài khoản
       await createUserWithEmailAndPassword(auth, values.email, values.password);

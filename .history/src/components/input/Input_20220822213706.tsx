@@ -24,7 +24,7 @@ export default function Input({
     control,
   });
   return (
-    <div>
+    <div className="">
       <input
         type={type}
         placeholder={error.length <= 0 ? placeholder : ""}

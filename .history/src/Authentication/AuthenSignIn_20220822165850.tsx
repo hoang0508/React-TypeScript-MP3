@@ -14,9 +14,6 @@ import { Input } from "../components/input";
 import { Dialog } from "@material-ui/core";
 import AuthenSocial from "./AuthenSocial";
 import { Checkbox } from "../components/checkbox";
-import { toast } from "react-toastify";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebases/Firebase-config";
 
 export interface IAuthenSignInProps {}
 
@@ -46,33 +43,19 @@ const schema = yup
 export default function AuthenSignIn(props: IAuthenSignInProps) {
   // useSelector isShowSignUp
   const { isShowSignIn } = useSelector((state: any) => state.authen);
+
   //react hook form
   const {
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
     control,
-    reset,
   } = useForm<IFormInputs>({
     mode: "onSubmit",
     resolver: yupResolver(schema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
   });
 
-  const handleAuthSignIn = async (values: IFormInputs) => {
-    try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
-      reset({
-        email: "",
-        password: "",
-      });
-      toast.success("Đăng nhập tài khoản thành công!!");
-      dispatch(setIsShowSignIn(false));
-    } catch (error) {
-      toast.error("Đăng nhập thất bại!!");
-    }
+  const handleAuthSignIn = (values: IFormInputs) => {
+    console.log(values);
   };
 
   // useHook (useValueToggle)
@@ -107,11 +90,7 @@ export default function AuthenSignIn(props: IAuthenSignInProps) {
       className="cursor-pointer"
     >
       <LayoutAuthen heading="Đăng nhập" onClick={handleCloseSignIn}>
-        <form
-          onSubmit={handleSubmit(handleAuthSignIn)}
-          className="py-7 px-4"
-          autoComplete="off"
-        >
+        <form onSubmit={handleSubmit(handleAuthSignIn)} className="py-7 px-4">
           <FormGroup>
             <Label className="bg-bgColor" name="email">
               Email
@@ -119,7 +98,7 @@ export default function AuthenSignIn(props: IAuthenSignInProps) {
             <Input
               name="email"
               control={control}
-              type="email"
+              type="text"
               placeholder="Email của bạn..."
               error={email?.message}
             />

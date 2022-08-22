@@ -15,10 +15,6 @@ import * as yup from "yup";
 import { setIsShowSignIn, setIsShowSignUp } from "../redux/AuthenSlice";
 import ButtonAuthen from "../components/button/ButtonAuthen";
 import { Dialog } from "@material-ui/core";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, db } from "../firebases/Firebase-config";
-import { addDoc, collection } from "firebase/firestore";
-import { toast } from "react-toastify";
 
 interface IFormInputs {
   fullname: string;
@@ -29,10 +25,7 @@ interface IFormInputs {
 // validation yup react hook form
 const schema = yup
   .object({
-    fullname: yup
-      .string()
-      .max(10, "Bạn được phép nhập 10 kí tự")
-      .required("Tên bạn không được để trống!!"),
+    fullname: yup.string().required("Tên bạn không được để trống!!"),
     email: yup
       .string()
       .email("Bạn cần nhập đúng địa chỉ email!")
@@ -55,45 +48,15 @@ const AuthenSignUp = () => {
   //react hook form
   const {
     handleSubmit,
-    formState: { isValid, errors, isSubmitting },
+    formState: { errors },
     control,
-    reset,
   } = useForm<IFormInputs>({
     mode: "onSubmit",
     resolver: yupResolver(schema),
-    defaultValues: {
-      fullname: "",
-      email: "",
-      password: "",
-    },
   });
 
-  // handle Auth SignUp
-  const handleAuthSignUp = async (values: IFormInputs) => {
-    try {
-      // Đăng ký tài khoản
-      await createUserWithEmailAndPassword(auth, values.email, values.password);
-      // update profile fullname
-      await updateProfile(auth.currentUser, {
-        displayName: values.fullname,
-      });
-      // addDoc , collection
-      const userRef = collection(db, "user");
-      addDoc(userRef, {
-        fullname: values.fullname,
-        email: values.email,
-        password: values.password,
-      });
-      reset({
-        fullname: "",
-        email: "",
-        password: "",
-      });
-      toast.success("Bạn đã đăng ký thành công tài khoản!!");
-      dispatch(setIsShowSignUp(false));
-    } catch (error) {
-      toast.error("Đăng ký tài khoản thất bại!!");
-    }
+  const handleAuthSignUp = (values: IFormInputs) => {
+    console.log(values);
   };
 
   // useHook (useValueToggle)
@@ -130,11 +93,7 @@ const AuthenSignUp = () => {
         className="cursor-pointer"
       >
         <LayoutAuthen onClick={handleCloseSignUp} heading="Đăng ký">
-          <form
-            onSubmit={handleSubmit(handleAuthSignUp)}
-            className="py-7 px-4"
-            autoComplete="off"
-          >
+          <form onSubmit={handleSubmit(handleAuthSignUp)} className="py-7 px-4">
             <FormGroup>
               <Label className="bg-bgColor" name="name">
                 Tên của bạn
@@ -196,7 +155,7 @@ const AuthenSignUp = () => {
                 </p>
               </Checkbox>
             </div>
-            <ButtonAuthen isLoading={isSubmitting}>Đăng ký</ButtonAuthen>
+            <ButtonAuthen>Đăng ký</ButtonAuthen>
           </form>
           <div className="bg-bgColor2 px-4 py-3 flex">
             <div className="flex items-center gap-x-4 flex-1">

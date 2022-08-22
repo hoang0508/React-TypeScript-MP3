@@ -1,7 +1,10 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import { MusicProvider } from "./contexts/ContextProviderMusic";
 import PlayListPage from "./pages/PlayListPage";
 import VideoPage from "./pages/VideoPage";
+import { fetchDataUser } from "./redux/AuthenSlice";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const {
   getHome,
@@ -21,6 +24,11 @@ function App() {
   //     console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
   //   })();
   // }, []);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchDataUser());
+  }, []);
   return (
     <Suspense fallback={<></>}>
       <Routes>
