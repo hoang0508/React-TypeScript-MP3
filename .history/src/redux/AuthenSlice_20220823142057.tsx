@@ -14,7 +14,7 @@ export const fetchDataUser: any = createAsyncThunk("user", async () => {
 });
 
 // logout authen
-export const SignOutUser: any = createAsyncThunk(
+export const SignOutUser: {} = createAsyncThunk(
   "signout",
   async (payload: any) => {
     signOut(payload)
@@ -48,9 +48,6 @@ const AuthenSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchDataUser.fulfilled, (state, action) => {
-      state.userInfo = action.payload;
-    });
-    builder.addCase(SignOutUser.fulfilled, (state, action) => {
       state.userInfo = action.payload;
     });
   },

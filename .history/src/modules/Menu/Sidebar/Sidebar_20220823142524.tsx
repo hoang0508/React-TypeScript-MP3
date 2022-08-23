@@ -63,6 +63,18 @@ export function Sidebar(props: Sidebarprops) {
   }, [dispatch]);
 
   const { userInfo } = useSelector((state: any) => state.authen);
+  console.log(
+    "🚀 ~ file: Sidebar.tsx ~ line 63 ~ Sidebar ~ userInfo",
+    userInfo
+  );
+
+  const [name, setName] = React.useState<string>("");
+
+  React.useEffect(() => {
+    if (userInfo === null) {
+      setName(userInfo?.displayName);
+    }
+  }, [userInfo]);
 
   // Log Out authen
   const handleSignOutAuthen = () => {
@@ -86,19 +98,19 @@ export function Sidebar(props: Sidebarprops) {
           </Button>
         </div>
         <div className="flex items-center bg-bgColor2 justify-between my-4 p-3 text-sm">
-          {!userInfo?.displayName ? (
-            <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
-              <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
-              <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
-            </div>
-          ) : (
+          {name ? (
             <div className="flex items-center gap-x-2">
               <img
                 src="/avatar-playlist.png"
                 className="w-6 h-6 object-cover "
                 alt=""
               />{" "}
-              <span className="text-white">{userInfo?.displayName}</span>
+              <span className="text-white">{name}</span>
+            </div>
+          ) : (
+            <div className="flex gap-x-2 text-[13px] login-link cursor-pointer">
+              <span onClick={() => handleAuthenSignIn()}>Đăng nhập</span>
+              <span onClick={() => handleAuthenSignUp()}>Đăng ký</span>
             </div>
           )}
           <Iconsetting className="w-4 h-4" />
@@ -117,15 +129,13 @@ export function Sidebar(props: Sidebarprops) {
               <span>{link.title}</span>
             </NavLink>
           ))}
-        {userInfo?.displayName && (
-          <div
-            className="flex items-center gap-x-2 absolute bottom-0  cursor-pointer bg-primary text-white py-3 px-1 w-full overflow-hidden"
-            onClick={handleSignOutAuthen}
-          >
-            <IconLogout />
-            <span>Đăng xuất</span>
-          </div>
-        )}
+        <div
+          className="flex items-center gap-x-2 absolute bottom-0  cursor-pointer bg-primary text-white py-3 px-1 w-full overflow-hidden"
+          onClick={handleSignOutAuthen}
+        >
+          <IconLogout />
+          <span>Đăng xuất</span>
+        </div>
       </div>
       <AuthenSignUp />
       <AuthenSignIn />
