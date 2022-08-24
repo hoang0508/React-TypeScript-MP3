@@ -2,7 +2,7 @@ import { getHome } from "nhaccuatui-api-full/dist";
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
-import { MusicItemType } from "../music";
+import { MusicItemType } from "../../utils/enum";
 import MusciItem from "../music/MusicItem";
 
 export interface VideoListProps {}

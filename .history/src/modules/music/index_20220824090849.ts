@@ -6,4 +6,6 @@ export interface MusicItemType {
   duration?: string;
   thumbURL: string;
   name: string;
+  dateCreate: number;
+  dateRelease: number;
 }

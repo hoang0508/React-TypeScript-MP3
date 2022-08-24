@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import HeadingLine from "../../components/common/Headingline";
-import { MusicItemType } from "../music";
+import { MusicItemType } from "../../utils/enum";
 import MusicImageAuthor from "../music/parts/MusicImageAuthor";
 import MusicTitle from "../music/parts/MusicTitle";
 
