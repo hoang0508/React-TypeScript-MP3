@@ -1,0 +1,36 @@
+.menu {
+  &-item {
+    position: relative;
+    text-align: center;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #f00;
+      z-index: -1;
+      transition: width 0.25s ease-in;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+    &-item.with {
+      width: 100px;
+    }
+    &-item.active::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #f00;
+      z-index: -1;
+      transition: width 0.25s ease-in;
+    }
+  }
+}
