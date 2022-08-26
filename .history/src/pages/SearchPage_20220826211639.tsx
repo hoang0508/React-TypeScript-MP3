@@ -59,7 +59,6 @@ const SearchPage = () => {
 
   const song = dataSearch?.search?.song?.song;
   const playlist = dataSearch?.search?.playlist?.playlist;
-  const video = dataSearch?.search?.video?.video;
 
   // handle Click Select Tab search
   const handleSelectSearch = (item: string) => {
@@ -95,7 +94,7 @@ const SearchPage = () => {
   //
 
   return (
-    <LayoutMusicPage musicSidebarR>
+    <LayoutMusicPage>
       <div className="border-b border-borderColor pb-3 mb-8">
         <SearchInput></SearchInput>
       </div>
@@ -106,11 +105,7 @@ const SearchPage = () => {
         ></MenuSelect>
       )}
 
-      <SelectSearchAll
-        video={video}
-        song={song}
-        playlist={playlist}
-      ></SelectSearchAll>
+      <SelectSearchAll song={song} playlist={playlist}></SelectSearchAll>
       <SelectSearchSong></SelectSearchSong>
       <SelectSearchPlist playlist={playlist}></SelectSearchPlist>
 

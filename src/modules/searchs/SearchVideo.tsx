@@ -1,21 +1,19 @@
-import * as React from "react";
+import React from "react";
 import { v4 } from "uuid";
 import GridLayout from "../../components/common/GridLayout";
 import { MusicItemType, NavigateName } from "../../utils/enum";
 import MusciItem from "../music/MusicItem";
 
-interface ISearchPlayListProps {
-  dataSearchPlayList: MusicItemType[];
+interface ISearchVideo {
+  dataSearchVideo: MusicItemType[];
 }
 
-export default function SearchPlayList({
-  dataSearchPlayList,
-}: ISearchPlayListProps) {
+const SearchVideo = ({ dataSearchVideo }: ISearchVideo) => {
   return (
     <GridLayout>
-      {dataSearchPlayList &&
-        dataSearchPlayList.length > 0 &&
-        dataSearchPlayList.map((item: MusicItemType) => (
+      {dataSearchVideo &&
+        dataSearchVideo.length > 0 &&
+        dataSearchVideo.map((item: MusicItemType) => (
           <MusciItem
             key={v4()}
             data={item}
@@ -24,9 +22,11 @@ export default function SearchPlayList({
               item.artists &&
               item.artists.map((art: any) => art.name).join(" , ")
             }
-            isNavigate={NavigateName.PlayList}
+            isNavigate={NavigateName.Video}
           ></MusciItem>
         ))}
     </GridLayout>
   );
-}
+};
+
+export default SearchVideo;

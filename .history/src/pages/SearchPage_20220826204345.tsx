@@ -11,8 +11,6 @@ import SearchInput from "../modules/searchs/SearchInput";
 import SearchKeyWord from "../modules/searchs/SearchKeyWord";
 import SearchPlayList from "../modules/searchs/SearchPlayLists";
 import SelectSearchAll from "../modules/searchs/selects/SelectSearchAll";
-import SelectSearchPlist from "../modules/searchs/selects/SelectSearchPlist";
-import SelectSearchSong from "../modules/searchs/selects/SelectSearchSong";
 import { Fetchdata } from "../redux/MusicSlice";
 import {
   setActiveSelect,
@@ -52,14 +50,9 @@ const SearchPage = () => {
   }, [dispatch]);
   // data Search
   const { dataSearch } = useSelector((state: any) => state.search);
-  console.log(
-    "🚀 ~ file: SearchPage.tsx ~ line 55 ~ SearchPage ~ dataSearch",
-    dataSearch
-  );
 
   const song = dataSearch?.search?.song?.song;
   const playlist = dataSearch?.search?.playlist?.playlist;
-  const video = dataSearch?.search?.video?.video;
 
   // handle Click Select Tab search
   const handleSelectSearch = (item: string) => {
@@ -86,8 +79,8 @@ const SearchPage = () => {
   //
   useEffect(() => {
     if (dataSearch?.status !== "error") {
-      dispatch(setDataSelect([]));
-      dispatch(setDataSelectName("all"));
+      setDataSelectName("all");
+      setDataSelect([]);
       dispatch(setActiveSelect("all"));
     }
   }, [dataSearch?.status, dispatch]);
@@ -95,7 +88,7 @@ const SearchPage = () => {
   //
 
   return (
-    <LayoutMusicPage musicSidebarR>
+    <LayoutMusicPage>
       <div className="border-b border-borderColor pb-3 mb-8">
         <SearchInput></SearchInput>
       </div>
@@ -106,13 +99,33 @@ const SearchPage = () => {
         ></MenuSelect>
       )}
 
-      <SelectSearchAll
-        video={video}
-        song={song}
-        playlist={playlist}
-      ></SelectSearchAll>
-      <SelectSearchSong></SelectSearchSong>
-      <SelectSearchPlist playlist={playlist}></SelectSearchPlist>
+      <SelectSearchAll song={song} playlist={playlist}></SelectSearchAll>
+
+      {dataSelect && dataSelect.length > 0 && selectName === "song" && (
+        <>
+          <HeadingLine>Bài hát</HeadingLine>
+          <div className="grid grid-cols-4 gap-5">
+            {dataSelect &&
+              dataSelect.length > 0 &&
+              dataSelect.map((item: MusicItemType) => (
+                <MusciItem data={item}></MusciItem>
+              ))}
+          </div>
+        </>
+      )}
+
+      {dataSelect && dataSelect.length > 0 && selectName === "playlist" && (
+        <>
+          <HeadingLine>Playlist</HeadingLine>
+          <div className="grid grid-cols-4 gap-5">
+            {dataSelect &&
+              dataSelect.length > 0 &&
+              dataSelect.map((item: MusicItemType) => (
+                <MusciItem data={item}></MusciItem>
+              ))}
+          </div>
+        </>
+      )}
 
       {dataSearch?.status === "error" && (
         <>

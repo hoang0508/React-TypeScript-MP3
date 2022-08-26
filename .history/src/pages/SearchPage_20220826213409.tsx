@@ -59,7 +59,7 @@ const SearchPage = () => {
 
   const song = dataSearch?.search?.song?.song;
   const playlist = dataSearch?.search?.playlist?.playlist;
-  const video = dataSearch?.search?.video?.video;
+  const video = dataSearch?.search?.playlist?.video;
 
   // handle Click Select Tab search
   const handleSelectSearch = (item: string) => {
@@ -95,7 +95,7 @@ const SearchPage = () => {
   //
 
   return (
-    <LayoutMusicPage musicSidebarR>
+    <LayoutMusicPage>
       <div className="border-b border-borderColor pb-3 mb-8">
         <SearchInput></SearchInput>
       </div>

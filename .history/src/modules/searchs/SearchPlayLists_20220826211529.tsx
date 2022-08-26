@@ -1,7 +1,7 @@
 import * as React from "react";
 import { v4 } from "uuid";
 import GridLayout from "../../components/common/GridLayout";
-import { MusicItemType, NavigateName } from "../../utils/enum";
+import { MusicItemType } from "../../utils/enum";
 import MusciItem from "../music/MusicItem";
 
 interface ISearchPlayListProps {
@@ -24,7 +24,6 @@ export default function SearchPlayList({
               item.artists &&
               item.artists.map((art: any) => art.name).join(" , ")
             }
-            isNavigate={NavigateName.PlayList}
           ></MusciItem>
         ))}
     </GridLayout>

@@ -95,7 +95,7 @@ const SearchPage = () => {
   //
 
   return (
-    <LayoutMusicPage musicSidebarR>
+    <LayoutMusicPage>
       <div className="border-b border-borderColor pb-3 mb-8">
         <SearchInput></SearchInput>
       </div>
