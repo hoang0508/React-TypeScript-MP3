@@ -6,7 +6,7 @@ import MusicTitle from "./parts/MusicTitle";
 import MusicAuthor from "./parts/MusicAuthor";
 import MusicImage from "./parts/MusicImage";
 import { useNavigate } from "react-router-dom";
-import { NavigateName } from "../../utils/enum";
+import { NavigateName } from "../../utils/type";
 interface MusciItemProps {
   data: MusicItemType;
   heading?: string;

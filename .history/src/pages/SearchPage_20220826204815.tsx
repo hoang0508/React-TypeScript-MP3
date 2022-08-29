@@ -18,7 +18,7 @@ import {
   setDataSelect,
   setDataSelectName,
 } from "../redux/SearchSlice";
-import { MusicItemType } from "../utils/enum";
+import { MusicItemType } from "../utils/type";
 
 const MenuSelectData = [
   {

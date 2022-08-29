@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
 
 export interface HomeMusicTopProps {}

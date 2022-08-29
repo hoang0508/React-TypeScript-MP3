@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
 
 interface ISearchPlayListProps {

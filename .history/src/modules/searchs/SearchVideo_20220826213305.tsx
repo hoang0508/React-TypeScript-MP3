@@ -1,5 +1,5 @@
 import React from "react";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 
 interface ISearchVideo {
   dataSearVideo: MusicItemType[];

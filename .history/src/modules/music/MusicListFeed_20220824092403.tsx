@@ -8,7 +8,7 @@ import MusciItem from "./MusicItem";
 import "./MusicList.scss";
 import HeadingLine from "../../components/common/Headingline";
 import { v4 } from "uuid";
-import { MusicItemType, NavigateName } from "../../utils/enum";
+import { MusicItemType, NavigateName } from "../../utils/type";
 interface MusicListFeedProps {
   heading: string;
 }

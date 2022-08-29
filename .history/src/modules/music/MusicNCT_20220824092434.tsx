@@ -8,7 +8,7 @@ import MusciItem from "./MusicItem";
 import MusicTitle from "./parts/MusicTitle";
 import { Button } from "../../components/button";
 import MusicAuthor from "./parts/MusicAuthor";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 export interface MusicNCTProps {}
 
 export default function MusicNCT(props: MusicNCTProps) {

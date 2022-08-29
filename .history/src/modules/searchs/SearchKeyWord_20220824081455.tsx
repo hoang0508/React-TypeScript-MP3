@@ -1,6 +1,6 @@
 import { getTopKeyword } from "nhaccuatui-api-full/dist";
 import * as React from "react";
-import { ItemKeyWork } from "../../utils/enum";
+import { ItemKeyWork } from "../../utils/type";
 
 export default function SearchKeyWord() {
   const [keyWord, setKeyWord] = React.useState<[]>([]);

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import HeadingLine from "../../components/common/Headingline";
 import { setIndexSong, setMusicSongKey } from "../../redux/MusicSlice";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusicDuration from "../music/parts/MusicDuration";
 import MusicImageAuthor from "../music/parts/MusicImageAuthor";
 import MusicTitle from "../music/parts/MusicTitle";

@@ -1,7 +1,7 @@
 import { getHome } from "nhaccuatui-api-full/dist";
 import * as React from "react";
 import { v4 } from "uuid";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
 
 export interface VideoListProps {}

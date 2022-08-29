@@ -11,7 +11,7 @@ import SearchInput from "../modules/searchs/SearchInput";
 import SearchKeyWord from "../modules/searchs/SearchKeyWord";
 import SearchPlayList from "../modules/searchs/SearchPlayLists";
 import { Fetchdata } from "../redux/MusicSlice";
-import { MusicItemType } from "../utils/enum";
+import { MusicItemType } from "../utils/type";
 
 const MenuSelectData = [
   {

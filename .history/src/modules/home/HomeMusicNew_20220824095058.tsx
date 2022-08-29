@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MusciItem from "../music/MusicItem";
 import "../music/MusicList.scss";
 import { v4 } from "uuid";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusicNews from "../music/MusicNews";
 import { setDataMusicNewList, setDataMusicNews } from "../../redux/MusicSlice";
 export interface HomeMusicNewprops {}

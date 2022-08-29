@@ -1,6 +1,6 @@
 import * as React from "react";
 import IconClendar from "../../components/icon/IconClendar";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusciItem from "./MusicItem";
 import MusicImageAuthor from "./parts/MusicImageAuthor";
 import MusicTitle from "./parts/MusicTitle";

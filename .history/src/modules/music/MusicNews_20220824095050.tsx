@@ -2,7 +2,7 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import IconClendar from "../../components/icon/IconClendar";
 import { setDataMusicNewList, setDataMusicNews } from "../../redux/MusicSlice";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusciItem from "./MusicItem";
 import MusicImageAuthor from "./parts/MusicImageAuthor";
 import MusicTitle from "./parts/MusicTitle";

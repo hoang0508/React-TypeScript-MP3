@@ -5,7 +5,7 @@ import MusicTitle from "../music/parts/MusicTitle";
 import "../music/MusicList.scss";
 import IconClendar from "../../components/icon/IconClendar";
 import { v4 } from "uuid";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 export interface HomeMusicNewprops {}
 
 export default function HomeMusicNew(props: HomeMusicNewprops) {

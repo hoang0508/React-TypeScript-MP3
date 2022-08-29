@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
-import { NavigateName } from "../../utils/enum";
+import { NavigateName } from "../../utils/type";
 import { MusicItemType } from "./index";
 import MusciItem from "./MusicItem";
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { v4 } from "uuid";
 import GridLayout from "../../components/common/GridLayout";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
 
 interface ISearchPlayListProps {

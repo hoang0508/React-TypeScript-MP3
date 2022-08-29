@@ -13,7 +13,7 @@ import SearchPlayList from "../modules/searchs/SearchPlayLists";
 import SelectSearchAll from "../modules/searchs/selects/SelectSearchAll";
 import { Fetchdata } from "../redux/MusicSlice";
 import { setActiveSelect } from "../redux/SearchSlice";
-import { MusicItemType } from "../utils/enum";
+import { MusicItemType } from "../utils/type";
 
 const MenuSelectData = [
   {

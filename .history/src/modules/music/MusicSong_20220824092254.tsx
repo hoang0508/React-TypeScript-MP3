@@ -5,7 +5,7 @@ import { useMusicPlay } from "../../contexts/ContextProviderMusic";
 import { setIndexSong, setMusicSongKey } from "../../redux/MusicSlice";
 import MusciItem from "./MusicItem";
 import lodash from "lodash";
-import { MusicItemType } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 interface MusicSongProps {
   dataSong: any[];
 }
