@@ -1,11 +1,15 @@
 import * as React from "react";
 import onErrorImg from "../../../hooks/useErrorImg";
-import { IArtists, MusicItemType } from "../../../utils/type";
+import {
+  IArtists,
+  ITrendingArtistsType,
+  MusicItemType,
+} from "../../../utils/type";
 
 interface MusicImageProps {
   classNames: string;
-  data?: MusicItemType;
-  imgTrendingArt?: string;
+  data: MusicItemType;
+  imgTrendingArt?: ITrendingArtistsType;
 }
 
 export default function MusicImage({
@@ -14,7 +18,7 @@ export default function MusicImage({
   imgTrendingArt,
 }: MusicImageProps) {
   const imageUrl = imgTrendingArt
-    ? imgTrendingArt
+    ? imgTrendingArt?.imageUrl
     : data?.artists
         ?.slice(0, 1)
         .map((item: IArtists) => item?.imageUrl)
@@ -22,7 +26,6 @@ export default function MusicImage({
   return (
     <div className={`music-image ${classNames}`}>
       <img
-        loading="lazy"
         src={data?.thumbnail || data?.thumbURL || imageUrl}
         alt=""
         className="w-full h-full  object-cover overflow-hidden"

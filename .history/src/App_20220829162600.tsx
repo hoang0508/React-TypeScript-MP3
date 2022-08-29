@@ -1,4 +1,3 @@
-import { exploreArtists } from "nhaccuatui-api-full/dist";
 import React, { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import DiscoverPage from "./pages/DiscoverPage";
@@ -21,12 +20,12 @@ const {
   //... and many other services
 } = require("nhaccuatui-api-full");
 function App() {
-  useEffect(() => {
-    (async () => {
-      const data = await exploreArtists();
-      console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await getTopKeyword();
+  //     console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
+  //   })();
+  // }, []);
   return (
     <Suspense fallback={<>Loading...</>}>
       <Routes>

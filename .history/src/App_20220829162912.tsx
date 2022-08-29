@@ -1,4 +1,3 @@
-import { exploreArtists } from "nhaccuatui-api-full/dist";
 import React, { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import DiscoverPage from "./pages/DiscoverPage";
@@ -23,7 +22,7 @@ const {
 function App() {
   useEffect(() => {
     (async () => {
-      const data = await exploreArtists();
+      const data = await getTrendingArtists();
       console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
     })();
   }, []);

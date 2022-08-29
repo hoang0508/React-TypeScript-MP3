@@ -22,7 +22,6 @@ export default function MusicImage({
   return (
     <div className={`music-image ${classNames}`}>
       <img
-        loading="lazy"
         src={data?.thumbnail || data?.thumbURL || imageUrl}
         alt=""
         className="w-full h-full  object-cover overflow-hidden"

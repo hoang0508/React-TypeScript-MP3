@@ -4,25 +4,22 @@ import { IArtists, MusicItemType } from "../../../utils/type";
 
 interface MusicImageProps {
   classNames: string;
-  data?: MusicItemType;
-  imgTrendingArt?: string;
+  data: MusicItemType;
 }
 
-export default function MusicImage({
-  classNames,
-  data,
-  imgTrendingArt,
-}: MusicImageProps) {
-  const imageUrl = imgTrendingArt
-    ? imgTrendingArt
-    : data?.artists
-        ?.slice(0, 1)
-        .map((item: IArtists) => item?.imageUrl)
-        .join("");
+export default function MusicImage({ classNames, data }: MusicImageProps) {
+  const { imageUrl } = data?.artists[0];
+  console.log(
+    "🚀 ~ file: MusicImage.tsx ~ line 12 ~ MusicImage ~ imageUrl",
+    imageUrl
+  );
+  // const imageUrl = data?.artists
+  //   ?.slice(0, 1)
+  //   .map((item: IArtists) => item?.imageUrl)
+  //   .join("");
   return (
     <div className={`music-image ${classNames}`}>
       <img
-        loading="lazy"
         src={data?.thumbnail || data?.thumbURL || imageUrl}
         alt=""
         className="w-full h-full  object-cover overflow-hidden"

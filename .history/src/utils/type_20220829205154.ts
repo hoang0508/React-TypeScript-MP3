@@ -15,6 +15,8 @@ export interface IArtists {
   imageUrl: string;
 }
 
+//
+//
 export interface ITrendingArtistsType extends MusicItemType {
   imageUrl: string;
 }
