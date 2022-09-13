@@ -1,0 +1,11 @@
+.accordion {
+  &-content {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    &-content--active {
+      transition: all 0.5s linear;
+      height: auto;
+    }
+  }
+}

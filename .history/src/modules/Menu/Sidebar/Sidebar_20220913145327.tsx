@@ -142,7 +142,11 @@ export function Sidebar(props: Sidebarprops) {
                 <Accordion
                   key={link.id}
                   icon={link.icon}
-                  className={`${linkClass} pr-3`}
+                  className={`${
+                    isActiveLink
+                      ? `${linkClass} link-border text-primary`
+                      : linkClass
+                  } pr-3`}
                   title={link?.title}
                   linkAccord={link?.linkChildren}
                 ></Accordion>

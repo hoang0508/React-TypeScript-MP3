@@ -24,7 +24,7 @@ export default function MusicImage({
     <div className={`music-image ${classNames}`}>
       <img
         loading="lazy"
-        src={data?.thumbnail || data?.thumbURL || imageUrl || "/img-error.png"}
+        src={data?.thumbnail || data?.thumbURL || imageUrl}
         alt=""
         className="w-full h-full  object-cover overflow-hidden"
         onError={(e: any) => onErrorImg(e)}

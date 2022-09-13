@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AuthenSignIn from "../../../Authentication/AuthenSignIn";
 import AuthenSignUp from "../../../Authentication/AuthenSignUp";
-import { Accordion } from "../../../components/accordions";
 import { Button } from "../../../components/button";
 import {
   IconDiscover,
@@ -40,30 +39,8 @@ const SidebarLinks = [
     id: 3,
     title: "Khám phá",
     icon: <IconDiscover />,
-    to: "kp",
+    // to: "/khampha",
     onClick: () => {},
-    linkChildren: [
-      {
-        id: 1,
-        title: "Bài hát",
-        to: "bai-hat",
-      },
-      {
-        id: 2,
-        title: "Playlist",
-        to: "playlist",
-      },
-      {
-        id: 3,
-        title: "Video",
-        to: "video",
-      },
-      {
-        id: 4,
-        title: "Nghệ sĩ",
-        to: "/nghe-si",
-      },
-    ],
   },
 ];
 
@@ -93,13 +70,6 @@ export function Sidebar(props: Sidebarprops) {
     dispatch(SignOutUser(auth));
   };
 
-  // isActice Accordion
-  const { isActiveLink } = useSelector((state: any) => state.accordion);
-  console.log(
-    "🚀 ~ file: Sidebar.tsx ~ line 98 ~ Sidebar ~ isActiveLink",
-    isActiveLink
-  );
-
   return (
     <>
       <div className="max-w-[200px] w-full h-full fixed top-0 left-0 z-20 border-r-2 border-borderColor">
@@ -107,7 +77,7 @@ export function Sidebar(props: Sidebarprops) {
           <img
             src="/logo.png"
             alt="logo"
-            className="w-[48px] h-[24px] object-cover "
+            className="w-[48px] h-[24px] object-cover"
           />
           <Button
             type="button"
@@ -136,31 +106,21 @@ export function Sidebar(props: Sidebarprops) {
         </div>
         {SidebarLinks &&
           SidebarLinks.length > 0 &&
-          SidebarLinks.map((link) => {
-            if (link.onClick) {
-              return (
-                <Accordion
-                  key={link.id}
-                  icon={link.icon}
-                  className={`${linkClass} pr-3`}
-                  title={link?.title}
-                  linkAccord={link?.linkChildren}
-                ></Accordion>
-              );
-            }
-            return (
-              <NavLink
-                to={link.to}
-                className={({ isActive }) =>
-                  isActive ? `${linkClass} link-border text-primary` : linkClass
-                }
-                key={link.id}
-              >
+          SidebarLinks.map((link) => (
+            <NavLink
+              to={link.to}
+              className={({ isActive }) =>
+                isActive ? `${linkClass} link-border text-primary` : linkClass
+              }
+              key={link.id}
+            >
+              <div className="flex">
                 {link.icon}
                 <span>{link.title}</span>
-              </NavLink>
-            );
-          })}
+              </div>
+              <span>{link?.onClick ? <>k</> : ""}</span>
+            </NavLink>
+          ))}
         {userInfo?.displayName && (
           <div
             className="flex items-center gap-x-2 absolute bottom-0  cursor-pointer bg-primary text-white py-3 px-1 w-full overflow-hidden"

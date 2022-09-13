@@ -16,6 +16,8 @@ import Iconsetting from "./IconSetting";
 import IconShare from "./IconShare";
 import IconVolume from "./IconVolume";
 
+
+
 export {
   Iconsetting,
   IconDiscover,
@@ -32,6 +34,6 @@ export {
   IconClose,
   IconCheck,
   IconLogout,
-  IconArrowDown,
-  IconArrowUp,
+  IconArrowDown
+  IconArrowUp
 };

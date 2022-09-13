@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AuthenSignIn from "../../../Authentication/AuthenSignIn";
 import AuthenSignUp from "../../../Authentication/AuthenSignUp";
-import { Accordion } from "../../../components/accordions";
 import { Button } from "../../../components/button";
 import {
   IconDiscover,
@@ -42,28 +41,6 @@ const SidebarLinks = [
     icon: <IconDiscover />,
     to: "kp",
     onClick: () => {},
-    linkChildren: [
-      {
-        id: 1,
-        title: "Bài hát",
-        to: "bai-hat",
-      },
-      {
-        id: 2,
-        title: "Playlist",
-        to: "playlist",
-      },
-      {
-        id: 3,
-        title: "Video",
-        to: "video",
-      },
-      {
-        id: 4,
-        title: "Nghệ sĩ",
-        to: "/nghe-si",
-      },
-    ],
   },
 ];
 
@@ -92,13 +69,6 @@ export function Sidebar(props: Sidebarprops) {
   const handleSignOutAuthen = () => {
     dispatch(SignOutUser(auth));
   };
-
-  // isActice Accordion
-  const { isActiveLink } = useSelector((state: any) => state.accordion);
-  console.log(
-    "🚀 ~ file: Sidebar.tsx ~ line 98 ~ Sidebar ~ isActiveLink",
-    isActiveLink
-  );
 
   return (
     <>
@@ -139,13 +109,17 @@ export function Sidebar(props: Sidebarprops) {
           SidebarLinks.map((link) => {
             if (link.onClick) {
               return (
-                <Accordion
+                <div
+                  onClick={link?.onClick}
+                  className={`${linkClass} justify-between items-center cursor-pointer`}
                   key={link.id}
-                  icon={link.icon}
-                  className={`${linkClass} pr-3`}
-                  title={link?.title}
-                  linkAccord={link?.linkChildren}
-                ></Accordion>
+                >
+                  <div className="flex gap-x-3 items-center">
+                    {link.icon}
+                    <span>{link.title}</span>
+                  </div>
+                  <span>{link?.onClick ? <>k</> : ""}</span>
+                </div>
               );
             }
             return (

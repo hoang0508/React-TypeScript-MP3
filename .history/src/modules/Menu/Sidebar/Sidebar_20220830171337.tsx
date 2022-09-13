@@ -94,11 +94,7 @@ export function Sidebar(props: Sidebarprops) {
   };
 
   // isActice Accordion
-  const { isActiveLink } = useSelector((state: any) => state.accordion);
-  console.log(
-    "🚀 ~ file: Sidebar.tsx ~ line 98 ~ Sidebar ~ isActiveLink",
-    isActiveLink
-  );
+  const { isActiceAcc } = useSelector((state: any) => state.accordion);
 
   return (
     <>
@@ -139,13 +135,18 @@ export function Sidebar(props: Sidebarprops) {
           SidebarLinks.map((link) => {
             if (link.onClick) {
               return (
-                <Accordion
-                  key={link.id}
-                  icon={link.icon}
-                  className={`${linkClass} pr-3`}
-                  title={link?.title}
-                  linkAccord={link?.linkChildren}
-                ></Accordion>
+                <div key={link.id}>
+                  <Accordion
+                    icon={link.icon}
+                    className={`${
+                      isActiceAcc
+                        ? `${linkClass} link-border text-primary`
+                        : linkClass
+                    } pr-3`}
+                    title={link?.title}
+                    linkAccord={link?.linkChildren}
+                  ></Accordion>
+                </div>
               );
             }
             return (

@@ -1,0 +1,43 @@
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { v4 } from "uuid";
+import { setisActiveLink } from "../../redux/AccordionSlice";
+
+interface ILinkAccordChild {
+  title: string;
+  to: string;
+}
+
+interface IAccordionContent {
+  linkAccord: ILinkAccordChild[];
+}
+
+const AccordionContent = ({ linkAccord }: IAccordionContent) => {
+  const dispatch = useDispatch();
+  const { isActiceAcc, isActiveLink } = useSelector(
+    (state: any) => state.accordion
+  );
+  console.log(isActiveLink);
+  const handleActiveLink = () => {
+    dispatch(setisActiveLink(!isActiveLink));
+  };
+  return (
+    <div
+      onClick={() => handleActiveLink()}
+      className={`flex flex-col justify-center gap-x-2 text-center gap-y-3  ${
+        isActiceAcc ? "accordion-content--active" : "accordion-content"
+      }`}
+    >
+      {linkAccord &&
+        linkAccord.length > 0 &&
+        linkAccord.map((linkChild) => (
+          <NavLink to={linkChild?.to} key={v4()}>
+            {linkChild?.title}
+          </NavLink>
+        ))}
+    </div>
+  );
+};
+
+export default AccordionContent;

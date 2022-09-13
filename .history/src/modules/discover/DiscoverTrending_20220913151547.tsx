@@ -17,10 +17,6 @@ export default function DiscoverTrending(props: IDiscoverTrendingProps) {
     artistTrending
   );
   const imgTrending = artistTrending[0]?.imageUrl;
-  console.log(
-    "🚀 ~ file: DiscoverTrending.tsx ~ line 20 ~ DiscoverTrending ~ imgTrending",
-    imgTrending
-  );
   return (
     <>
       <div className="bg-bgColor2 p-3 mb-8">

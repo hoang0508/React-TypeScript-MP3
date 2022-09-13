@@ -93,13 +93,6 @@ export function Sidebar(props: Sidebarprops) {
     dispatch(SignOutUser(auth));
   };
 
-  // isActice Accordion
-  const { isActiveLink } = useSelector((state: any) => state.accordion);
-  console.log(
-    "🚀 ~ file: Sidebar.tsx ~ line 98 ~ Sidebar ~ isActiveLink",
-    isActiveLink
-  );
-
   return (
     <>
       <div className="max-w-[200px] w-full h-full fixed top-0 left-0 z-20 border-r-2 border-borderColor">
@@ -139,13 +132,14 @@ export function Sidebar(props: Sidebarprops) {
           SidebarLinks.map((link) => {
             if (link.onClick) {
               return (
-                <Accordion
-                  key={link.id}
-                  icon={link.icon}
-                  className={`${linkClass} pr-3`}
-                  title={link?.title}
-                  linkAccord={link?.linkChildren}
-                ></Accordion>
+                <div key={link.id}>
+                  <Accordion
+                    icon={link.icon}
+                    className={`${linkClass} pr-3`}
+                    title={link?.title}
+                    linkAccord={link?.linkChildren}
+                  ></Accordion>
+                </div>
               );
             }
             return (

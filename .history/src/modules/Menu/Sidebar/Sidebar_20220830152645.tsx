@@ -46,22 +46,22 @@ const SidebarLinks = [
       {
         id: 1,
         title: "Bài hát",
-        to: "bai-hat",
+        to: "",
       },
       {
         id: 2,
         title: "Playlist",
-        to: "playlist",
+        to: "",
       },
       {
         id: 3,
         title: "Video",
-        to: "video",
+        to: "",
       },
       {
         id: 4,
         title: "Nghệ sĩ",
-        to: "/nghe-si",
+        to: "",
       },
     ],
   },
@@ -92,13 +92,6 @@ export function Sidebar(props: Sidebarprops) {
   const handleSignOutAuthen = () => {
     dispatch(SignOutUser(auth));
   };
-
-  // isActice Accordion
-  const { isActiveLink } = useSelector((state: any) => state.accordion);
-  console.log(
-    "🚀 ~ file: Sidebar.tsx ~ line 98 ~ Sidebar ~ isActiveLink",
-    isActiveLink
-  );
 
   return (
     <>
@@ -139,13 +132,14 @@ export function Sidebar(props: Sidebarprops) {
           SidebarLinks.map((link) => {
             if (link.onClick) {
               return (
-                <Accordion
-                  key={link.id}
-                  icon={link.icon}
-                  className={`${linkClass} pr-3`}
-                  title={link?.title}
-                  linkAccord={link?.linkChildren}
-                ></Accordion>
+                <div key={link.id}>
+                  <Accordion
+                    icon={link.icon}
+                    className={`${linkClass} pr-3`}
+                    title={link?.title}
+                    linkAccord={link?.linkChildren}
+                  ></Accordion>
+                </div>
               );
             }
             return (
