@@ -1,0 +1,15 @@
+import * as React from "react";
+
+export interface IArtistOptionProps {}
+
+const dataArtistOption = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
+export default function ArtistOption(props: IArtistOptionProps) {
+  return (
+    <select>
+      {dataArtistOption &&
+        dataArtistOption.length > 0 &&
+        dataArtistOption.map((item) => <option value="volvo">{item}</option>)}
+    </select>
+  );
+}
