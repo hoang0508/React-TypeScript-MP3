@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
+import HeadingLine from "../components/common/Headingline";
 import { LayoutMusicPage } from "../layout/LayoutMusicPage";
 import DiscoverSong from "../modules/discover/DiscoverSong";
 import MenuSelect from "../modules/Menu/MenuSelect/MenuSelect";
 import { fetchDiscoverExplore } from "../redux/DiscoverSlice";
+import { setActiveSelect } from "../redux/SearchSlice";
 
 export interface IDiscoverSongPageProps {}
 
@@ -12,22 +14,22 @@ const MenuSelectSong = [
   {
     id: 1,
     title: "Mới & Hot",
-    head: "hot",
+    head: "moi-hot",
   },
   {
     id: 2,
     title: "Việt Nam",
-    head: "vietnam",
+    head: "viet-nam",
   },
   {
     id: 3,
     title: "Âu Mỹ",
-    head: "aumy",
+    head: "au-my",
   },
   {
     id: 4,
     title: "Châu Á",
-    head: "chau",
+    head: "chau-a",
   },
 ];
 const itemsPerPage = 36;
@@ -82,9 +84,17 @@ export default function DiscoverSongPage(props: IDiscoverSongPageProps) {
     setNextPage(event.selected + 1);
   };
 
+  // Active select tab
+  useEffect(() => {
+    dispatch(setActiveSelect("moi-hot"));
+  }, [dispatch]);
+
   return (
     <LayoutMusicPage>
       <MenuSelect dataSelect={MenuSelectSong}></MenuSelect>
+      <HeadingLine className="text-[18px]  font-bold mb-5">
+        Mới & Hot
+      </HeadingLine>
       <DiscoverSong></DiscoverSong>
       <ReactPaginate
         breakLabel="..."

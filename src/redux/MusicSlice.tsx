@@ -54,7 +54,7 @@ const MusicSlice = createSlice({
     dataMusicNewList: [],
     dataMusicKey: {},
     musicSongKey: undefined,
-    isLoading: false,
+    isLoading: true,
     errorMessage: "",
     indexSong: 0,
   },

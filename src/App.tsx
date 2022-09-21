@@ -25,7 +25,7 @@ function App() {
   // useEffect(() => {
   //   (async () => {
   //     const data = await explore({
-  //       type: "song",
+  //       type: "mv",
   //       key: "moi-hot",
   //       page: 1,
   //       pageSize: 36,

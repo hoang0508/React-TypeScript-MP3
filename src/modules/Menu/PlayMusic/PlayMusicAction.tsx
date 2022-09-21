@@ -1,9 +1,14 @@
 import * as React from "react";
-import { IconPlayingMusic, IconRepeat } from "../../../components/icon";
+import {
+  IconPlayingMusic,
+  IconRandom,
+  IconRepeat,
+} from "../../../components/icon";
 import IconNextMusic from "../../../components/icon/IconNextMusic";
 import IconPauseMusic from "../../../components/icon/IconPauseMusic";
 import IconPrevMusic from "../../../components/icon/IconPrevMusic";
 import { useMusicPlay } from "../../../contexts/ContextProviderMusic";
+import randomImage from "../../../assets/images/random-icon.png";
 
 interface PlayMusicActionProps {
   handleClickPrevMusic: () => {};
@@ -23,7 +28,9 @@ export default function PlayMusicAction({
   } = useMusicPlay();
   return (
     <div className="mt-5 flex justify-between items-center">
-      <div></div>
+      <div className="w-[15px] h-[15px] cursor-pointer">
+        <img src={randomImage} alt="" className="object-cover w-full h-full" />
+      </div>
       <div>
         <IconPrevMusic onClick={() => handleClickPrevMusic()}></IconPrevMusic>
       </div>

@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import HeadingLine from "../../components/common/Headingline";
-import { setMusicSongKey } from "../../redux/MusicSlice";
+import { setIndexSong, setMusicSongKey } from "../../redux/MusicSlice";
 import { MusicItemType } from "../../utils/type";
 import MusicDuration from "../music/parts/MusicDuration";
 import MusicImageAuthor from "../music/parts/MusicImageAuthor";
@@ -41,18 +41,12 @@ export default function PlayListSongs(props: PlayListSongsProps) {
   // index Song
   const { indexSong } = useSelector((state: any) => state.music);
 
-  // data Song Music -- getSong
-  const { dataMusicKey } = useSelector((state: any) => state.music);
-
-  // lấy key song
-  const keySongs = dataMusicKey?.key;
-
   if (!data?.playlist) return null;
   const { songs } = data?.playlist;
 
-  const handleSongItem = (item: MusicItemType) => {
+  const handleSongItem = (item: MusicItemType, index: number) => {
     dispatch(setMusicSongKey(item.key));
-    // dispatch(setIndexSong(0));
+    dispatch(setIndexSong(index));
 
     setTimeout(
       lodash.debounce(() => {
@@ -80,15 +74,15 @@ export default function PlayListSongs(props: PlayListSongsProps) {
 
         {songs &&
           songs.length > 0 &&
-          songs.map((item: MusicItemType) => (
+          songs.map((item: MusicItemType, index: number) => (
             <div
               key={v4()}
               className="grid grid-cols-3 gap-x-12 items-center bg-bgColor2 py-2 px-3 mb-1 cursor-pointer"
-              onClick={() => handleSongItem(item)}
+              onClick={() => handleSongItem(item, index)}
             >
               <MusicTitle
                 className={
-                  item.key === keySongs && indexSong >= 0
+                  index === indexSong
                     ? "h-[20px] text-[13px] text-primary"
                     : "h-[20px] text-[13px]"
                 }

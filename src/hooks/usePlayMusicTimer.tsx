@@ -16,7 +16,9 @@ export default function usePlayMusicTimer(data?: any) {
 
       if (remainingTime === undefined && durationTime === undefined) {
         setRemainingTime("0:00");
-        setDurationTime(data?.song?.duration);
+        durationTime
+          ? setDurationTime(data?.song?.duration)
+          : setDurationTime("0:00");
       } else {
         setDurationTime(fomatTimer(refMp3?.current?.duration));
         setRemainingTime(fomatTimer(refMp3?.current?.currentTime));

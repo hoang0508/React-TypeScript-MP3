@@ -10,6 +10,7 @@ import IconLogo from "./IconLogo";
 import IconLogout from "./IconLogout";
 import IconPlay from "./IconPlay";
 import IconPlayingMusic from "./IconPlayingMusic";
+import IconRandom from "./IconRandom";
 import IconRepeat from "./IconRepeat";
 import IconSearch from "./IconSearch";
 import Iconsetting from "./IconSetting";
@@ -34,4 +35,5 @@ export {
   IconLogout,
   IconArrowDown,
   IconArrowUp,
+  IconRandom,
 };

@@ -28,6 +28,7 @@ export default function PlayMusicAudio({
 
   // src music mp3
   const [configMusicItemMp3, setConfigMusicItemMp3] = React.useState<any>();
+
   React.useEffect(() => {
     setConfigMusicItemMp3(dataSong?.song);
   }, [dataSong?.song]);

@@ -6,6 +6,8 @@ import MusicAuthor from "./parts/MusicAuthor";
 import MusicImage from "./parts/MusicImage";
 import { useNavigate } from "react-router-dom";
 import { MusicItemType, NavigateName } from "../../utils/type";
+import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
+import { useSelector } from "react-redux";
 interface MusciItemProps {
   data: MusicItemType;
   heading?: string;
@@ -47,43 +49,86 @@ export default function MusciItem({
         break;
     }
   };
+
+  // loading
+  const { isLoading } = useSelector((state: any) => state.music);
   return (
-    <div
-      className={`cursor-pointer ${
-        flexCenter ? "flex items-center gap-x-2" : ""
-      }`}
-      onMouseEnter={onMouse}
-      onClick={handlePlayListItem}
-    >
-      <div className="relative overflow-hidden music-item">
-        <MusicImage data={data} classNames={classNames}></MusicImage>
-        <div className="music-overlay"></div>
-        <div className="music-icon">
-          <span
-            className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 cursor-pointer text-xl text-white
+    <>
+      {isLoading ? (
+        <LoadingMusicItem
+          data={data}
+          heading={heading}
+          author={author}
+          classNames={classNames}
+        ></LoadingMusicItem>
+      ) : (
+        <div
+          className={`cursor-pointer ${
+            flexCenter ? "flex items-center gap-x-2" : ""
+          }`}
+          onMouseEnter={onMouse}
+          onClick={handlePlayListItem}
+        >
+          <div className="relative overflow-hidden music-item">
+            <MusicImage data={data} classNames={classNames}></MusicImage>
+            <div className="music-overlay"></div>
+            <div className="music-icon">
+              <span
+                className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 cursor-pointer text-xl text-white
         "
-          >
-            {playNot ? "" : <IconPlay className="w-10 h-10"></IconPlay>}
-          </span>
-          <span className="absolute top-2 right-2">
-            {playNot ? "" : <IconDots></IconDots>}
-          </span>
+              >
+                {playNot ? "" : <IconPlay className="w-10 h-10"></IconPlay>}
+              </span>
+              <span className="absolute top-2 right-2">
+                {playNot ? "" : <IconDots></IconDots>}
+              </span>
+            </div>
+            {musicTime && (
+              <div className="absolute bottom-0 right-0 music-duration">
+                {data?.duration}
+              </div>
+            )}
+            {isPlayList && (
+              <div className="absolute bottom-2 right-2 bg-opacity-20 bg-black rounded-full w-10 h-10 z-10 flex items-center justify-center">
+                <IconPlayingMusic className="w-8 h-8" />
+              </div>
+            )}
+          </div>
+          <div className={`${flexCenter ? "" : "mt-3"}`}>
+            {heading && <MusicTitle>{data?.title}</MusicTitle>}
+            {author && (
+              <MusicAuthor className="mt-2 text-xs">{author}</MusicAuthor>
+            )}
+          </div>
         </div>
-        {musicTime && (
-          <div className="absolute bottom-0 right-0 music-duration">
-            {data?.duration}
-          </div>
-        )}
-        {isPlayList && (
-          <div className="absolute bottom-2 right-2 bg-opacity-20 bg-black rounded-full w-10 h-10 z-10 flex items-center justify-center">
-            <IconPlayingMusic className="w-8 h-8" />
-          </div>
-        )}
+      )}
+    </>
+  );
+}
+
+// Loading skeleton
+const LoadingMusicItem = ({ heading, author, classNames }: MusciItemProps) => {
+  return (
+    <div>
+      <div className="relative overflow-hidden music-item">
+        <div className={classNames}>
+          <LoadingSkeleton
+            width="100%"
+            height="100%"
+            radius="10px"
+          ></LoadingSkeleton>
+        </div>
       </div>
-      <div className={`${flexCenter ? "" : "mt-3"}`}>
-        {heading && <MusicTitle>{data?.title}</MusicTitle>}
-        {author && <MusicAuthor className="mt-2 text-xs">{author}</MusicAuthor>}
+      <div>
+        <div className="my-3">
+          {heading && (
+            <LoadingSkeleton width="177px" height="20px"></LoadingSkeleton>
+          )}
+        </div>
+        {author && (
+          <LoadingSkeleton width="177px" height="20px"></LoadingSkeleton>
+        )}
       </div>
     </div>
   );
-}
+};

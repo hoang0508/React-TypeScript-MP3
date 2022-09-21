@@ -7,10 +7,10 @@ interface HeadingLineProps {
 
 export default function HeadingLine({
   children,
-  className = "mb-4",
+  className = "mb-4 text-2xl",
 }: HeadingLineProps) {
   return (
-    <h3 className={`"text-text1 text-2xl font-bold  capitalize" ${className}`}>
+    <h3 className={`"text-text1  font-bold  capitalize" ${className}`}>
       {children}
     </h3>
   );

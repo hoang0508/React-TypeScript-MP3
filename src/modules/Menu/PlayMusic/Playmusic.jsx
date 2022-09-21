@@ -113,7 +113,7 @@ export default function Playmusic() {
     if (dir === 1) {
       dispatch(setIndexSong(indexSong + 1));
       if (indexSong >= dataSongLength.length) {
-        setIndexSong(0);
+        dispatch(setIndexSong(0));
       }
       handleClickPause();
       setTimeout(
@@ -124,7 +124,7 @@ export default function Playmusic() {
     } else if (dir === -1) {
       dispatch(setIndexSong(indexSong - 1));
       if (indexSong <= 0) {
-        setIndexSong(dataSongLength.length - 1);
+        dispatch(setIndexSong(dataSongLength.length - 1));
       }
       handleClickPause();
       setTimeout(
