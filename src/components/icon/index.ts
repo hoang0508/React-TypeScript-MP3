@@ -2,6 +2,7 @@ import IconArrowDown from "./IconArrowDown";
 import IconArrowUp from "./IconArrowUp";
 import IconCheck from "./IconCheck";
 import IconClose from "./IconClose";
+import IconDelete from "./IconDelete";
 import IconDiscover from "./IconDiscover";
 import IconDots from "./IconDots";
 import IconDownLoad from "./IconDownLoad";
@@ -36,4 +37,5 @@ export {
   IconArrowDown,
   IconArrowUp,
   IconRandom,
+  IconDelete,
 };

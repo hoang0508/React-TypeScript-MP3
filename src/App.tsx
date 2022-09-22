@@ -1,6 +1,7 @@
 import { explore, exploreArtists } from "nhaccuatui-api-full/dist";
 import React, { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { LocalSrogateProvider } from "./contexts/ContextLocalStroage";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
 const VideoPage = lazy(() => import("./pages/VideoPage"));
@@ -48,7 +49,14 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/timkiem" element={<SearchPage />}></Route>
+        <Route
+          path="/timkiem"
+          element={
+            <LocalSrogateProvider>
+              <SearchPage />
+            </LocalSrogateProvider>
+          }
+        ></Route>
         <Route path="/nghe-si" element={<DiscoverArtistPage />}></Route>
         <Route path="/discover-song" element={<DiscoverSongPage />}></Route>
         <Route path="/PlayList/:id" element={<PlayListPage />}></Route>

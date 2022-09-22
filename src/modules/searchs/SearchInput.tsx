@@ -1,36 +1,74 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IconSearch } from "../../components/icon";
 import lodash from "lodash";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchSearchData, setMusicSearch } from "../../redux/SearchSlice";
+import {
+  FetchSearchData,
+  FetchSearchDffer,
+  setIsShow,
+  setMusicSearch,
+} from "../../redux/SearchSlice";
 import useClickOutSide from "../../hooks/useClickOutSide";
+import { useLocalStrContext } from "../../contexts/ContextLocalStroage";
 export interface ISearchInputProps {}
 
 export default function SearchInput(props: ISearchInputProps) {
   // Change state input search
   // const [musicSearch, setMusicSearch] = React.useState<string>("");
-  const { musicSearch } = useSelector((state: any) => state.search);
+  const { musicSearch, isShow: inputBorder } = useSelector(
+    (state: any) => state.search
+  );
   // dispatch call data search
   const dispatch = useDispatch();
 
+  // set Input change
   const handleChangeSearch = lodash.debounce((e: any) => {
     dispatch(setMusicSearch(e.target.value));
   }, 500);
 
-  React.useEffect(() => {
-    dispatch(FetchSearchData(musicSearch));
+  // context localstrorage
+  const { setValue: setValueSearchHis, storedValue } = useLocalStrContext();
+
+  // key down enter
+  const handleKeyDown = (event: any) => {
+    if (event.key === "Enter") {
+      // 👇️ your logic here
+      setValueSearchHis([
+        ...storedValue,
+        {
+          id: Math.floor(Math.random() * 1000),
+          nameSearchHis: musicSearch,
+        },
+      ]);
+      dispatch(FetchSearchData(musicSearch));
+      dispatch(setIsShow(false));
+    } else {
+      dispatch(FetchSearchData(""));
+    }
+  };
+
+  // useEffect FetchSearchData
+  useEffect(() => {
+    dispatch(FetchSearchData(""));
+  }, [dispatch]);
+
+  // useEffect
+  useEffect(() => {
+    if (musicSearch) {
+      dispatch(setIsShow(true));
+      dispatch(FetchSearchDffer(musicSearch));
+    }
+    dispatch(FetchSearchDffer(""));
   }, [dispatch, musicSearch]);
 
   // hook useClickoutSide
-  const {
-    show: inputBorder,
-    setShow: setInputBorder,
-    nodeRef: inputRef,
-  } = useClickOutSide();
+  const { nodeRef: inputRef } = useClickOutSide();
 
+  // click input set border
   const handleClickInput = () => {
-    setInputBorder(!inputBorder);
+    dispatch(setIsShow(!inputBorder));
   };
+
   return (
     <div
       className={`flex gap-x-2 border  rounded  bg-bgColor2 max-w-[450px] py-2 px-1 transition-all cursor-pointer ${
@@ -45,6 +83,7 @@ export default function SearchInput(props: ISearchInputProps) {
         className="bg-transparent text-white w-full"
         placeholder="Tìm kiếm..."
         onChange={(e) => handleChangeSearch(e)}
+        onKeyDown={handleKeyDown}
       />
     </div>
   );

@@ -5,9 +5,11 @@ import HeadingLine from "../components/common/Headingline";
 import { LoadingSearch } from "../components/loading";
 import { LayoutMusicPage } from "../layout/LayoutMusicPage";
 import MenuSelect from "../modules/Menu/MenuSelect/MenuSelect";
+import SearchHistory from "../modules/searchs/SearchHistory";
 import SearchHits from "../modules/searchs/SearchHits";
 import SearchInput from "../modules/searchs/SearchInput";
 import SearchKeyWord from "../modules/searchs/SearchKeyWord";
+import SearchOffer from "../modules/searchs/SearchOffer";
 import SelectSearchAll from "../modules/searchs/selects/SelectSearchAll";
 import SelectSearchPlist from "../modules/searchs/selects/SelectSearchPlist";
 import SelectSearchSong from "../modules/searchs/selects/SelectSearchSong";
@@ -52,10 +54,6 @@ const SearchPage = () => {
   // data Search
   const { dataSearch, loading, musicSearch } = useSelector(
     (state: any) => state.search
-  );
-  console.log(
-    "🚀 ~ file: SearchPage.tsx ~ line 53 ~ SearchPage ~ dataSearch",
-    dataSearch
   );
 
   const song = dataSearch?.search?.song?.song;
@@ -108,10 +106,13 @@ const SearchPage = () => {
     }
   }, [dataSearch]);
 
+  console.log(dataSearch);
+
   return (
     <LayoutMusicPage musicSidebarR>
-      <div className="border-b border-borderColor pb-3 mb-8">
+      <div className="border-b border-borderColor pb-3 mb-8 relative">
         <SearchInput></SearchInput>
+        <SearchOffer></SearchOffer>
       </div>
       {dataSearch?.status !== "error" && (
         <MenuSelect
@@ -120,11 +121,11 @@ const SearchPage = () => {
         ></MenuSelect>
       )}
 
-      <div className="mt-3">
+      {/* <div className="mt-3">
         {musicSearch && (
           <>{loadingSearch ? <LoadingSearch></LoadingSearch> : ""}</>
         )}
-      </div>
+      </div> */}
 
       <SelectSearchAll
         video={video}
@@ -139,6 +140,8 @@ const SearchPage = () => {
         <>
           <HeadingLine>Top từ khóa</HeadingLine>
           <SearchKeyWord></SearchKeyWord>
+          <Gap />
+          <SearchHistory></SearchHistory>
           <Gap />
           <HeadingLine>Có thể hits</HeadingLine>
           <SearchHits></SearchHits>

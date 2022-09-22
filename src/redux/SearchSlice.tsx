@@ -9,15 +9,26 @@ export const FetchSearchData: any = createAsyncThunk(
   }
 );
 
+// call data
+export const FetchSearchDffer: any = createAsyncThunk(
+  "SearchOffer",
+  async (payload: string, getState) => {
+    const data = await searchByKeyword(payload);
+    return data;
+  }
+);
+
 const SearchSlice = createSlice({
   name: "search",
   initialState: {
     dataSearch: {},
+    dataOffer: undefined,
     dataSelect: [],
     loading: true,
     selectName: "",
     activeSelect: "",
     musicSearch: "",
+    isShow: false,
   },
   reducers: {
     setActiveSelect: (state, action) => ({
@@ -33,14 +44,21 @@ const SearchSlice = createSlice({
       dataSelect: action.payload,
     }),
     setMusicSearch: (state, action) => {
-      console.log(action);
       state.musicSearch = action.payload;
     },
+    setIsShow: (state, action) => ({
+      ...state,
+      isShow: action.payload,
+    }),
   },
   extraReducers: (builder) => {
     builder.addCase(FetchSearchData.fulfilled, (state, action) => {
       state.loading = false;
       state.dataSearch = action.payload;
+    });
+    builder.addCase(FetchSearchDffer.fulfilled, (state, action) => {
+      state.loading = false;
+      state.dataOffer = action.payload;
     });
   },
 });
@@ -50,5 +68,6 @@ export const {
   setDataSelectName,
   setDataSelect,
   setMusicSearch,
+  setIsShow,
 } = SearchSlice.actions;
 export default SearchSlice.reducer;

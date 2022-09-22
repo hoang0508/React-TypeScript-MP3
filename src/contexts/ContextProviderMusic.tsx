@@ -70,7 +70,7 @@ const MusicProvider = (props: any) => {
 function useMusicPlay() {
   const context = useContext(MusicContext);
   if (typeof context === "undefined")
-    throw new Error("useCount must be used within a AuthProvider");
+    throw new Error("useMusicContext must be used within a MusicProvider");
   return context;
 }
 

@@ -1,23 +1,23 @@
 import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setIsShow } from "../redux/SearchSlice";
 
 export default function useClickOutSide() {
-  const [show, setShow] = useState(true);
+  const dispatch = useDispatch();
   const nodeRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutSide = (e: any) => {
       if (nodeRef.current && !nodeRef.current.contains(e.target)) {
-        setShow(false);
+        dispatch(setIsShow(false));
       }
     };
     document.body.addEventListener("click", handleClickOutSide);
     return () => {
       document.removeEventListener("click", handleClickOutSide);
     };
-  }, []);
+  }, [dispatch]);
   return {
-    show,
-    setShow,
     nodeRef,
   };
 }
