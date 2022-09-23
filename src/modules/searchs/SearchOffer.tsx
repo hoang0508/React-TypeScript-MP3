@@ -6,7 +6,7 @@ import OfferVideo from "./parts/OfferVideo";
 
 export interface ISearchOfferProps {}
 
-export default function SearchOffer(props: ISearchOfferProps) {
+export default React.memo(function SearchOffer(props: ISearchOfferProps) {
   const { dataOffer, isShow: isShowOffer } = useSelector(
     (state: any) => state.search
   );
@@ -30,4 +30,4 @@ export default function SearchOffer(props: ISearchOfferProps) {
       )}
     </>
   );
-}
+});

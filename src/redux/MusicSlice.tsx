@@ -3,6 +3,7 @@ import { getPlaylistDetail, getVideoDetail } from "nhaccuatui-api-full/dist";
 const {
   getHome,
   getSong,
+  getTopicDetail,
   //... and many other services
 } = require("nhaccuatui-api-full");
 
@@ -24,7 +25,7 @@ export const FetchDataSong: any = createAsyncThunk(
   }
 );
 
-// data playList Music
+// data playList Music details
 export const FectchDataPlayList: any = createAsyncThunk(
   "fetchPlayList",
   async (payload: string) => {
@@ -33,11 +34,20 @@ export const FectchDataPlayList: any = createAsyncThunk(
   }
 );
 
-// data Video
+// data Video details
 export const FetchDataVideo: any = createAsyncThunk(
   "fetchVideo",
   async (payload: string) => {
     const data = await getVideoDetail(payload);
+    return data;
+  }
+);
+
+// data Topic details
+export const FetchDataTopic: any = createAsyncThunk(
+  "fetchTopic",
+  async (payload: string) => {
+    const data = await getTopicDetail(payload);
     return data;
   }
 );
@@ -50,6 +60,7 @@ const MusicSlice = createSlice({
     dataMusicSong: {},
     dataPlayList: {},
     dataVideo: {},
+    dataTopic: {},
     dataMusicNews: {},
     dataMusicNewList: [],
     dataMusicKey: {},
@@ -115,6 +126,12 @@ const MusicSlice = createSlice({
       // Tắt trạng thái loading, lưu thông tin user vào store
       state.isLoading = false;
       state.dataVideo = action.payload;
+    });
+
+    builder.addCase(FetchDataTopic.fulfilled, (state, action) => {
+      // Tắt trạng thái loading, lưu thông tin user vào store
+      state.isLoading = false;
+      state.dataTopic = action.payload;
     });
 
     // Khi thực hiện action Fetchdata thất bại (Promise rejected)

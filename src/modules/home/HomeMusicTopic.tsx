@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
+import { NavigateName } from "../../utils/enum";
 import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
 import MusicTopic from "../music/MusicTopic";
@@ -17,7 +18,12 @@ export default function HomeMusicTopic(props: HomeMusicTopicProps) {
         dataTopic
           .slice(0, 4)
           .map((item: MusicItemType) => (
-            <MusciItem key={v4()} playNot data={item}></MusciItem>
+            <MusciItem
+              isNavigate={NavigateName.Topic}
+              key={v4()}
+              playNot
+              data={item}
+            ></MusciItem>
           ))}
     </MusicTopic>
   );

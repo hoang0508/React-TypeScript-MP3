@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { IconSearch } from "../../components/icon";
 import lodash from "lodash";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,10 +21,18 @@ export default function SearchInput(props: ISearchInputProps) {
   // dispatch call data search
   const dispatch = useDispatch();
 
+  // useCallback debound
+  const onSetDebounceKeyKeyWord = useCallback(
+    lodash.debounce((text) => dispatch(setMusicSearch(text)), 500),
+    []
+  );
+
   // set Input change
-  const handleChangeSearch = lodash.debounce((e: any) => {
+  const handleChangeSearch = (e: any) => {
+    onSetDebounceKeyKeyWord(e.target.value);
+    // lodash.debounce(() => dispatch(setMusicSearch(e.target.value)), 500);
     dispatch(setMusicSearch(e.target.value));
-  }, 500);
+  };
 
   // context localstrorage
   const { setValue: setValueSearchHis, storedValue } = useLocalStrContext();
@@ -83,7 +91,8 @@ export default function SearchInput(props: ISearchInputProps) {
         className="bg-transparent text-white w-full"
         placeholder="Tìm kiếm..."
         onChange={(e) => handleChangeSearch(e)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={(e) => handleKeyDown(e)}
+        value={musicSearch}
       />
     </div>
   );

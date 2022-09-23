@@ -1,9 +1,9 @@
 import { getHome } from "nhaccuatui-api-full/dist";
 import * as React from "react";
 import { v4 } from "uuid";
+import { NavigateName } from "../../utils/enum";
 import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
-import { NavigateName } from "../../utils/type";
 
 export interface VideoListProps {}
 

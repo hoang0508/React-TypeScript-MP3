@@ -18,8 +18,3 @@ export interface IArtists {
 export interface ITrendingArtistsType extends MusicItemType {
   imageUrl: string;
 }
-
-export enum NavigateName {
-  PlayList = "PlayList",
-  Video = "Video",
-}

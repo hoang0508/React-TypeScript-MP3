@@ -5,9 +5,10 @@ import MusicTitle from "./parts/MusicTitle";
 import MusicAuthor from "./parts/MusicAuthor";
 import MusicImage from "./parts/MusicImage";
 import { useNavigate } from "react-router-dom";
-import { MusicItemType, NavigateName } from "../../utils/type";
+import { MusicItemType } from "../../utils/type";
 import LoadingSkeleton from "../../components/loading/LoadingSkeleton";
 import { useSelector } from "react-redux";
+import { NavigateName } from "../../utils/enum";
 interface MusciItemProps {
   data: MusicItemType;
   heading?: string;
@@ -44,6 +45,9 @@ export default function MusciItem({
         break;
       case NavigateName.Video:
         navigate(`/VideoMusic/${key}`);
+        break;
+      case NavigateName.Topic:
+        navigate(`/Topic/${key}`);
         break;
       default:
         break;

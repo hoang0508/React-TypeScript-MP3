@@ -1,7 +1,8 @@
 import React from "react";
 import { v4 } from "uuid";
 import GridLayout from "../../components/common/GridLayout";
-import { MusicItemType, NavigateName } from "../../utils/type";
+import { NavigateName } from "../../utils/enum";
+import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
 
 interface ISearchVideo {

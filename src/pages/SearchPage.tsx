@@ -19,6 +19,7 @@ import {
   setActiveSelect,
   setDataSelect,
   setDataSelectName,
+  setIsShow,
 } from "../redux/SearchSlice";
 import { SelectTab } from "../utils/enum";
 
@@ -52,9 +53,12 @@ const SearchPage = () => {
     dispatch(Fetchdata());
   }, [dispatch]);
   // data Search
-  const { dataSearch, loading, musicSearch } = useSelector(
-    (state: any) => state.search
-  );
+  const {
+    dataSearch,
+    loading,
+    musicSearch,
+    isShow: inputBorder,
+  } = useSelector((state: any) => state.search);
 
   const song = dataSearch?.search?.song?.song;
   const playlist = dataSearch?.search?.playlist?.playlist;
@@ -105,8 +109,6 @@ const SearchPage = () => {
       setLoadingSearch(true);
     }
   }, [dataSearch]);
-
-  console.log(dataSearch);
 
   return (
     <LayoutMusicPage musicSidebarR>
