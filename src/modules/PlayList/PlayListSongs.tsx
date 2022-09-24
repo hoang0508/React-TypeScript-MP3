@@ -45,6 +45,7 @@ export default function PlayListSongs(props: PlayListSongsProps) {
   const { songs } = data?.playlist;
 
   const handleSongItem = (item: MusicItemType, index: number) => {
+    // console.log(item);
     dispatch(setMusicSongKey(item.key));
     dispatch(setIndexSong(index));
 

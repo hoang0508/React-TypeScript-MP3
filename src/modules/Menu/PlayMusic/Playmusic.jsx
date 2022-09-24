@@ -46,10 +46,16 @@ export default function Playmusic() {
   // index Song
   const indexSong = useSelector((state) => state.music.indexSong);
 
+  // music DataMusicKey
+  const { dataMusicKey } = useSelector((state) => state.music);
+
   //author song
   const authorSong =
-    dataSong?.song?.artists &&
-    dataSong?.song?.artists.map((art) => art.name).join(" , ");
+    indexSong >= 1
+      ? dataMusicKey?.song?.artists &&
+        dataMusicKey?.song?.artists.map((art) => art.name).join(" , ")
+      : dataSong?.song?.artists &&
+        dataSong?.song?.artists.map((art) => art.name).join(" , ");
 
   //  Context usePlaymusic
   const { handleClickPlay, handleClickPause, handleRepeatMusic, repeatMusic } =
@@ -82,9 +88,6 @@ export default function Playmusic() {
       isMounted.current = false;
     };
   }, []);
-
-  // music DataMusicKey
-  const { dataMusicKey } = useSelector((state) => state.music);
 
   // useEffect src music mp3
   React.useEffect(() => {
@@ -148,6 +151,8 @@ export default function Playmusic() {
       changeSong(1);
     }
   };
+
+  console.log(dataMusicKey);
 
   return (
     <div className="flex justify-between flex-col gap-y-[100px]">
