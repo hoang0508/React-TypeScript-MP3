@@ -53,3 +53,30 @@
   text-overflow: ellipsis;
   word-break: break-word;
 }
+
+//
+.button {
+  cursor: pointer;
+  display: inline-block;
+  &-share {
+    max-width: 160px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 16px;
+    padding: 10px 0;
+    border-radius: 100rem;
+    &--fb {
+      background-image: linear-gradient(75deg, #2f80ed, #00aeef);
+    }
+    &--link {
+      background-image: linear-gradient(
+        75deg,
+        rgba(45, 170, 237),
+        rgba(149, 217, 109, 0.8)
+      );
+    }
+  }
+}

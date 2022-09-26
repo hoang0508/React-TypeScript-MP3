@@ -152,8 +152,6 @@ export default function Playmusic() {
     }
   };
 
-  console.log(dataMusicKey);
-
   return (
     <div className="flex justify-between flex-col gap-y-[100px]">
       <div className="bg-bgColor2 py-3 px-4">

@@ -14,7 +14,6 @@ export default React.memo(function SearchOffer(props: ISearchOfferProps) {
   const playlist = dataOffer?.search?.playlist?.playlist;
   const video = dataOffer?.search?.video?.video;
 
-  console.log(dataOffer);
   return (
     <>
       {isShowOffer && (

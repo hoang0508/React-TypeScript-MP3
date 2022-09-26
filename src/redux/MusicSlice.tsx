@@ -66,6 +66,7 @@ const MusicSlice = createSlice({
     dataMusicKey: {},
     musicSongKey: undefined,
     isLoading: true,
+    isShowModal: false,
     errorMessage: "",
     indexSong: 0,
   },
@@ -94,6 +95,11 @@ const MusicSlice = createSlice({
     setDataMusicNewList: (state, action) => ({
       ...state,
       dataMusicNewList: action.payload,
+    }),
+    //set isShowModal
+    setIsShowModal: (state, action) => ({
+      ...state,
+      isShowModal: action.payload,
     }),
   },
   extraReducers: (builder) => {
@@ -148,5 +154,6 @@ export const {
   setDataMusicKey,
   setDataMusicNewList,
   setDataMusicNews,
+  setIsShowModal,
 } = MusicSlice.actions;
 export default MusicSlice.reducer;

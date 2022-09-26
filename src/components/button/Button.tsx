@@ -21,7 +21,7 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`font-medium flex justify-center items-centercursor-pointer ${className}`}
+      className={`font-medium flex justify-center items-center cursor-pointer ${className}`}
     >
       {child}
     </button>

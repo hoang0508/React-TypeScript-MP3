@@ -2,6 +2,7 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { LayoutMusicPage } from "../layout/LayoutMusicPage";
+import PlaylistShare from "../modules/PlayList/parts/PlaylistShare";
 import PlayListContent from "../modules/PlayList/PLayListContent";
 import PlayListDownLoad from "../modules/PlayList/PLayListDowLoad";
 import PlayListSimilar from "../modules/PlayList/PlayListSimilar";
@@ -20,6 +21,7 @@ export default function PlayListPage(props: PlayListPageProps) {
     <LayoutMusicPage musicSidebarR>
       <PlayListContent></PlayListContent>
       <PlayListDownLoad></PlayListDownLoad>
+      <PlaylistShare></PlaylistShare>
       <PlayListSongs></PlayListSongs>
       <PlayListSimilar></PlayListSimilar>
     </LayoutMusicPage>
