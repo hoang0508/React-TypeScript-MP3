@@ -10,7 +10,11 @@ export interface IPlaylistShareProps {}
 
 export default function PlaylistShare(props: IPlaylistShareProps) {
   const { isShowModal } = useSelector((state: any) => state.music);
-  const url: any = window.location.pathname;
+  const url: any = window.location.href;
+  console.log(
+    "🚀 ~ file: PlaylistShare.tsx ~ line 14 ~ PlaylistShare ~ url",
+    url
+  );
   return (
     <>
       {/* {isShowModal && ( */}
