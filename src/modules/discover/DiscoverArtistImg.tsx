@@ -15,7 +15,6 @@ export default function DiscoverArtistImg() {
   const { dataUpdateArtists, dataExploreArtists } = useSelector(
     (state: any) => state.discover
   );
-  console.log(dataExploreArtists?.artist);
 
   const dispatch = useDispatch();
   React.useEffect(() => {

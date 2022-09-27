@@ -55,9 +55,9 @@ const SearchPage = () => {
   // data Search
   const {
     dataSearch,
-    loading,
-    musicSearch,
-    isShow: inputBorder,
+    // loading,
+    // musicSearch,
+    // isShow: inputBorder,
   } = useSelector((state: any) => state.search);
 
   const song = dataSearch?.search?.song?.song;
@@ -109,8 +109,6 @@ const SearchPage = () => {
       setLoadingSearch(true);
     }
   }, [dataSearch]);
-
-  console.log(dataSearch);
 
   return (
     <LayoutMusicPage musicSidebarR>

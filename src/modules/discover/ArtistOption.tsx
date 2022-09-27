@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
-import { Select } from "../../components/select";
 import { setDataUpdateArtists } from "../../redux/DiscoverSlice";
 
 export interface IArtistOptionProps {}
@@ -38,7 +37,7 @@ export default function ArtistOption(props: IArtistOptionProps) {
 
   React.useEffect(() => {
     if (dataExploreArtists?.status === "success") {
-      if (selectText === "ALL") {
+      if (selectText === "All") {
         dispatch(setDataUpdateArtists(dataExploreArtists?.artist));
       } else {
         const selectDataOption =

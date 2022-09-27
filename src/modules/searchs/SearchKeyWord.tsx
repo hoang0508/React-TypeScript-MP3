@@ -35,7 +35,7 @@ export default function SearchKeyWord() {
   };
 
   return (
-    <div className="flex flex-wrap gap-x-3 gap-y-3 items-center">
+    <div className="flex flex-wrap gap-x-3 gap-y-3 items-center cursor-pointer">
       {keyWord &&
         keyWord.length > 0 &&
         keyWord.map((item: ItemKeyWork, index: number) => (

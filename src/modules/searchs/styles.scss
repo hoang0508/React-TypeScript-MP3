@@ -1,0 +1,15 @@
+.search-his {
+  transition: all 0.25s ease;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  &:hover &--delete {
+    opacity: 1;
+    visibility: visible;
+  }
+  &--delete {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+  }
+}

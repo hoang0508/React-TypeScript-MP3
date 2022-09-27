@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { IconSearch } from "../../components/icon";
+import { IconClose, IconSearch } from "../../components/icon";
 import lodash from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -77,9 +77,16 @@ export default function SearchInput(props: ISearchInputProps) {
     dispatch(setIsShow(!inputBorder));
   };
 
+  // Remove text search
+  const handleRemoveText = () => {
+    dispatch(setMusicSearch(""));
+    dispatch(FetchSearchData(""));
+    dispatch(FetchSearchDffer(""));
+  };
+
   return (
     <div
-      className={`flex gap-x-2 border  rounded  bg-bgColor2 max-w-[450px] py-2 px-1 transition-all cursor-pointer ${
+      className={`relative flex gap-x-2 border  rounded  bg-bgColor2 max-w-[450px] py-2 px-1 transition-all cursor-pointer ${
         inputBorder ? "border-primary" : "border-borderColor"
       }`}
       onClick={() => handleClickInput()}
@@ -94,6 +101,14 @@ export default function SearchInput(props: ISearchInputProps) {
         onKeyDown={(e) => handleKeyDown(e)}
         value={musicSearch}
       />
+      {inputBorder && (
+        <span
+          className="absolute top-2/4 right-3 -translate-y-2/4"
+          onClick={() => handleRemoveText()}
+        >
+          <IconClose />
+        </span>
+      )}
     </div>
   );
 }

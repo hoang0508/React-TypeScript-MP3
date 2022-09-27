@@ -17,6 +17,7 @@ export default function MusicImageAuthor({
   className = "flex items-center mb-2",
   textSize,
 }: MusicImageAuthorProps) {
+  // console.log(dataAuthor);
   return (
     <div className={className}>
       {authorImage &&

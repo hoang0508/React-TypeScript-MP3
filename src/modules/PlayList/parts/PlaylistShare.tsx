@@ -5,19 +5,20 @@ import Modal from "../../../components/modal/Modal";
 import { FaFacebookF } from "react-icons/fa";
 import { AiOutlineLink } from "react-icons/ai";
 import { FacebookShareButton } from "react-share";
+import { toast } from "react-toastify";
 
 export interface IPlaylistShareProps {}
 
 export default function PlaylistShare(props: IPlaylistShareProps) {
   const { isShowModal } = useSelector((state: any) => state.music);
   const url: any = window.location.href;
-  console.log(
-    "🚀 ~ file: PlaylistShare.tsx ~ line 14 ~ PlaylistShare ~ url",
-    url
-  );
+
+  const handleCoppyLink = () => {
+    navigator.clipboard.writeText(url);
+    toast.success("Coppy successfully!!");
+  };
   return (
     <>
-      {/* {isShowModal && ( */}
       <Modal
         title="Chia sẻ"
         className={`${isShowModal ? "modal-show" : "modal-close"}`}
@@ -32,12 +33,15 @@ export default function PlaylistShare(props: IPlaylistShareProps) {
           </Button>
         </FacebookShareButton>
 
-        <Button className="button-share button-share--link" type="button">
+        <Button
+          className="button-share button-share--link"
+          type="button"
+          onClick={() => handleCoppyLink()}
+        >
           <AiOutlineLink />
           <span>Sao chép link</span>
         </Button>
       </Modal>
-      {/* )} */}
     </>
   );
 }

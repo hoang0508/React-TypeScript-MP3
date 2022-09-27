@@ -2,7 +2,7 @@ import * as React from "react";
 import HeadingLine from "../../components/common/Headingline";
 import { IconDelete } from "../../components/icon";
 import { useLocalStrContext } from "../../contexts/ContextLocalStroage";
-
+import "./styles.scss";
 export interface ISearchHistoryProps {}
 
 export default function SearchHistory(props: ISearchHistoryProps) {
@@ -39,11 +39,11 @@ export default function SearchHistory(props: ISearchHistoryProps) {
         dataSearchHis.length > 0 &&
         dataSearchHis.map((item: { id: number; nameSearchHis: string }) => (
           <div
-            className="bg-bgColor2 py-3 px-4 flex justify-between items-center rounded mb-2"
+            className="bg-bgColor2 py-3 px-4 flex justify-between items-center rounded mb-2 cursor-pointer search-his"
             key={item?.id}
           >
             <span>{item?.nameSearchHis}</span>
-            <div>
+            <div className="search-his--delete">
               <IconDelete onClick={() => handleRemoveSearchHis(item?.id)} />
             </div>
           </div>
