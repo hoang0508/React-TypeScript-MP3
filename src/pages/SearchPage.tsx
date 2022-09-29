@@ -66,6 +66,10 @@ const SearchPage = () => {
 
   // handle Click Select Tab search
   const handleSelectSearch = (item: string) => {
+    console.log(
+      "🚀 ~ file: SearchPage.tsx ~ line 69 ~ handleSelectSearch ~ item",
+      item
+    );
     switch (item) {
       case `${SelectTab.song}`:
         dispatch(setDataSelect(song));

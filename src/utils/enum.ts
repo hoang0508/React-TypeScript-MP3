@@ -10,3 +10,8 @@ export enum NavigateName {
   Video = "Video",
   Topic = "Topic",
 }
+
+export enum Rankcategory {
+  musicViet = "nhac-viet",
+  musicAumy = "au-my",
+}

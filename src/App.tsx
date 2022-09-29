@@ -9,6 +9,7 @@ const PlayListPage = lazy(() => import("./pages/PlayListPage"));
 const DiscoverArtistPage = lazy(() => import("./pages/DiscoverArtistPage"));
 const DiscoverSongPage = lazy(() => import("./pages/DiscoverSongPage"));
 const TopicPage = lazy(() => import("./pages/TopicPage"));
+const TableRankingPage = lazy(() => import("./pages/TableRankingPage"));
 
 const {
   getHome,
@@ -24,17 +25,18 @@ const {
   //... and many other services
 } = require("nhaccuatui-api-full");
 function App() {
-  // useEffect(() => {
-  //   (async () => {
-  //     const data = await explore({
-  //       type: "mv",
-  //       key: "moi-hot",
-  //       page: 1,
-  //       pageSize: 36,
-  //     });
-  //     console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const data = await getChart({
+        category: "nhac-viet",
+        time: {
+          week: 38,
+          year: 2022,
+        },
+      });
+      console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
+    })();
+  }, []);
   return (
     <Suspense
       fallback={
@@ -63,6 +65,7 @@ function App() {
         <Route path="/PlayList/:id" element={<PlayListPage />}></Route>
         <Route path="/VideoMusic/:id" element={<VideoPage />}></Route>
         <Route path="/Topic/:id" element={<TopicPage />}></Route>
+        <Route path="/table-ranking" element={<TableRankingPage />}></Route>
       </Routes>
     </Suspense>
   );

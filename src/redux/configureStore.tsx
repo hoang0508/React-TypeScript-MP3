@@ -3,6 +3,7 @@ import AccordionSlice from "./AccordionSlice";
 import AuthenSlice from "./AuthenSlice";
 import DiscoverSlice from "./DiscoverSlice";
 import MusicSlice from "./MusicSlice";
+import RankingSlice from "./RankingSlice";
 import SearchSlice from "./SearchSlice";
 
 const reducer = combineReducers({
@@ -11,6 +12,7 @@ const reducer = combineReducers({
   search: SearchSlice,
   discover: DiscoverSlice,
   accordion: AccordionSlice,
+  ranking: RankingSlice,
 });
 
 const store = configureStore({

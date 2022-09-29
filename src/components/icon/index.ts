@@ -1,5 +1,6 @@
 import IconArrowDown from "./IconArrowDown";
 import IconArrowUp from "./IconArrowUp";
+import IconChart from "./IconChant";
 import IconCheck from "./IconCheck";
 import IconClose from "./IconClose";
 import IconDelete from "./IconDelete";
@@ -19,6 +20,7 @@ import IconShare from "./IconShare";
 import IconVolume from "./IconVolume";
 
 export {
+  IconChart,
   Iconsetting,
   IconDiscover,
   IconHome,

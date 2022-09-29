@@ -6,6 +6,7 @@ import AuthenSignUp from "../../../Authentication/AuthenSignUp";
 import { Accordion } from "../../../components/accordions";
 import { Button } from "../../../components/button";
 import {
+  IconChart,
   IconDiscover,
   IconHome,
   IconLogout,
@@ -42,6 +43,12 @@ const SidebarLinks = [
     icon: <IconDiscover />,
     to: "kp",
     onClick: () => {},
+  },
+  {
+    id: 4,
+    title: "BXH NCT",
+    to: "/table-ranking",
+    icon: <IconChart />,
   },
 ];
 
