@@ -25,18 +25,18 @@ const {
   //... and many other services
 } = require("nhaccuatui-api-full");
 function App() {
-  useEffect(() => {
-    (async () => {
-      const data = await getChart({
-        category: "nhac-viet",
-        time: {
-          week: 38,
-          year: 2022,
-        },
-      });
-      console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await getChart({
+  //       category: "nhac-viet",
+  //       time: {
+  //         week: 38,
+  //         year: 2022,
+  //       },
+  //     });
+  //     console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
+  //   })();
+  // }, []);
   return (
     <Suspense
       fallback={

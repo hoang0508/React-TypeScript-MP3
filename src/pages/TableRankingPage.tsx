@@ -1,10 +1,15 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Gap from "../components/common/Gap";
+import { ShareSocial } from "../components/share";
 import { TabCategory } from "../components/tab";
 import { yearNumber } from "../configs/ConfigDateTime";
 import { LayoutMusicPage } from "../layout/LayoutMusicPage";
 import MenuSelect from "../modules/Menu/MenuSelect/MenuSelect";
 import RankingDate from "../modules/ranking/RankingDate";
+import RankingListSong from "../modules/ranking/RankingListSong";
+import RankingShare from "../modules/ranking/RankingShare";
+import RankingTop from "../modules/ranking/RankingTop";
 import { fetchDataRank } from "../redux/RankingSlice";
 import { Rankcategory } from "../utils/enum";
 
@@ -54,20 +59,16 @@ export default function TableRankingPage(props: ITableRankingPageProps) {
     );
   }, [dispatch, weeks]);
 
-  const { dataTableRank } = useSelector((state: any) => state.ranking);
-  console.log(
-    "🚀 ~ file: TableRankingPage.tsx ~ line 58 ~ TableRankingPage ~ dataTableRank",
-    dataTableRank
-  );
   return (
-    <LayoutMusicPage>
+    <LayoutMusicPage musicSidebarR>
       <MenuSelect dataSelect={dataSelectRanking}></MenuSelect>
       <TabCategory dataCategory={dataCategoryMus}></TabCategory>
       <RankingDate></RankingDate>
-      <div>
-        <div></div>
-        <div></div>
-      </div>
+      <RankingTop></RankingTop>
+      <RankingShare></RankingShare>
+      <ShareSocial></ShareSocial>
+      <Gap className="mb-6" />
+      <RankingListSong></RankingListSong>
     </LayoutMusicPage>
   );
 }

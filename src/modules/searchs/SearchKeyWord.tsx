@@ -2,6 +2,7 @@ import { getTopKeyword } from "nhaccuatui-api-full/dist";
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { v4 } from "uuid";
+import { useLocalStrContext } from "../../contexts/ContextLocalStroage";
 import {
   FetchSearchData,
   FetchSearchDffer,
@@ -15,8 +16,6 @@ interface ItemKeyWork {
 export default function SearchKeyWord() {
   const [keyWord, setKeyWord] = React.useState<[]>([]);
 
-  //
-
   React.useEffect(() => {
     const fetchData = async () => {
       const reponse = await getTopKeyword();
@@ -28,8 +27,18 @@ export default function SearchKeyWord() {
   // dispatch
   const dispatch = useDispatch();
 
+  // context localstrorage
+  const { setValue: setValueSearchHis, storedValue } = useLocalStrContext();
+
   const handleClickKeyWord = (title: string) => {
     dispatch(setMusicSearch(title));
+    setValueSearchHis([
+      ...storedValue,
+      {
+        id: Math.floor(Math.random() * 1000),
+        nameSearchHis: title,
+      },
+    ]);
     dispatch(FetchSearchDffer(title));
     dispatch(FetchSearchData(title));
   };

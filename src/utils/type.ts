@@ -1,5 +1,6 @@
 export interface MusicItemType {
   key: string;
+  songKey: string;
   title?: string;
   thumbnail: string;
   artists?: IArtists[];
@@ -8,6 +9,9 @@ export interface MusicItemType {
   name: string;
   dateCreate: number;
   dateRelease: number;
+  highestPosition: number;
+  totalWeekInRanked: number;
+  oldPosition: number;
 }
 
 //

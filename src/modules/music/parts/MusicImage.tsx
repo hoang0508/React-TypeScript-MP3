@@ -20,6 +20,7 @@ export default function MusicImage({
           ?.slice(0, 1)
           .map((item: IArtists) => item?.imageUrl)
           .join("");
+
   return (
     <div className={`music-image ${classNames}`}>
       <img

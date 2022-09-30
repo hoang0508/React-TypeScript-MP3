@@ -18,15 +18,37 @@ import PlayMusicVolume from "./PlayMusicVolume";
 export default function Playmusic() {
   // data music
   const data = useSelector((state) => state.music.dataMusic);
-
+  const dataSong1 = data?.song;
   // Data Play list
   const { dataPlayList } = useSelector((state) => state.music);
   const dataPlayListSongs = dataPlayList?.playlist?.songs;
 
+  // ranking data
+  const { dataTableRank } = useSelector((state) => state.ranking);
+  const dataTableRankSong = dataTableRank?.ranking?.song;
+
+  const h =
+    dataTableRankSong &&
+    dataTableRankSong.length > 0 &&
+    dataTableRankSong.map((item) => {
+      return item?.songKey;
+    });
+
+  console.log(h);
+
   // render khi hiển thị lần đầu nếu key là undefine
-  const checkKey = dataPlayListSongs
-    ? dataPlayListSongs[0]?.key
-    : data?.song && data?.song[0].key;
+  let checkKey;
+
+  if (dataPlayListSongs) {
+    checkKey = dataPlayListSongs[0]?.key;
+  } else if (data) {
+    checkKey = data?.song && data?.song[0].key;
+  } else if (dataTableRankSong) {
+    checkKey =
+      dataTableRankSong &&
+      dataTableRankSong.length > 0 &&
+      dataTableRankSong[0]?.songKey;
+  }
 
   // key song  lấy ra key music khi click vào item song
   const keySong = useSelector((state) => state.music.musicSongKey);
@@ -62,19 +84,43 @@ export default function Playmusic() {
     useMusicPlay();
 
   //data song length
-  const dataSongLength = dataPlayListSongs ? dataPlayListSongs : data?.song;
+  // const dataSongLength = dataPlayListSongs ? dataPlayListSongs : data?.song;
+
+  let dataSongLength;
+  if (dataPlayListSongs) {
+    dataSongLength = dataPlayListSongs;
+  } else if (dataSong1) {
+    dataSongLength = dataSong1;
+  } else if (dataTableRankSong) {
+    dataSongLength = dataTableRankSong;
+  }
 
   // data music key , check diều kiện để lấy ra key bài hát , (nếu chưa có dataPlayListSong thì lấy key data)
-  const MusicKeyData = dataPlayListSongs
-    ? dataPlayListSongs &&
+
+  let MusicKeyData;
+  if (dataPlayListSongs) {
+    MusicKeyData =
+      dataPlayListSongs &&
       dataPlayListSongs.length > 0 &&
       dataPlayListSongs.map((item, index) => {
         return item.key;
-      })
-    : data?.song &&
-      dataSongLength.map((item, index) => {
+      });
+  } else if (dataSong1) {
+    MusicKeyData =
+      data?.song &&
+      dataSong1.map((item, index) => {
         return item.key;
       });
+  } else if (dataTableRank) {
+    MusicKeyData =
+      dataTableRankSong &&
+      dataTableRankSong.length > 0 &&
+      dataTableRankSong.map((item) => {
+        return item?.songKey;
+      });
+  }
+
+  console.log(MusicKeyData);
 
   // Clean up useEffect
   const isMounted = React.useRef(true);
@@ -111,11 +157,13 @@ export default function Playmusic() {
     changeSong(-1);
   };
 
+  console.log(dataSongLength?.length);
+
   // change Song Music next , prev
   function changeSong(dir) {
     if (dir === 1) {
       dispatch(setIndexSong(indexSong + 1));
-      if (indexSong >= dataSongLength.length) {
+      if (indexSong >= dataSongLength?.length) {
         dispatch(setIndexSong(0));
       }
       handleClickPause();

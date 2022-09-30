@@ -1,15 +1,15 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
-import { Button } from "../../../components/button";
-import Modal from "../../../components/modal/Modal";
 import { FaFacebookF } from "react-icons/fa";
 import { AiOutlineLink } from "react-icons/ai";
 import { FacebookShareButton } from "react-share";
 import { toast } from "react-toastify";
+import { Button } from "../button";
+import Modal from "../modal/Modal";
 
-export interface IPlaylistShareProps {}
+export interface IShareSocialProps {}
 
-export default function PlaylistShare(props: IPlaylistShareProps) {
+export default function ShareSocial(props: IShareSocialProps) {
   const { isShowModal } = useSelector((state: any) => state.music);
   const url: any = window.location.href;
 

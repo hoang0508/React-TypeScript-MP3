@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getChart } from "nhaccuatui-api-full/dist";
-import { curr, weekNumber } from "../configs/ConfigDateTime";
+import { weekNumber } from "../configs/ConfigDateTime";
 
 interface IPalyLoadChart {
   category: string;
@@ -29,7 +29,7 @@ const RankSlice = createSlice({
     dataTableRank: {},
     weeks: weekNumber - 1,
     days: cur2.getDay(),
-    isLoading: false,
+    isLoading: true,
   },
   reducers: {
     setDecreDate: (state: any) => ({

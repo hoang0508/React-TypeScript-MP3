@@ -1,7 +1,9 @@
 import * as React from "react";
 
-export interface GapProps {}
+interface GapProps {
+  className?: string;
+}
 
-export default function Gap(props: GapProps) {
-  return <div className="mb-8"></div>;
+export default function Gap({ className = "mb-8" }: GapProps) {
+  return <div className={`${className}`}></div>;
 }

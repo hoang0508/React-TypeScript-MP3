@@ -1,26 +1,14 @@
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ShareDown from "../../components/common/ShareDown";
-import { IconDownLoad, IconShare } from "../../components/icon";
-import IconCloud from "../../components/icon/IconCloud";
-import { setIsShowModal } from "../../redux/MusicSlice";
 
 export interface PlayListDownLoadProps {}
 
 export default function PlayListDownLoad(props: PlayListDownLoadProps) {
-  const { dataPlayList: data, isShowModal } = useSelector(
-    (state: any) => state.music
-  );
-  const dispatch = useDispatch();
+  const { dataPlayList: data } = useSelector((state: any) => state.music);
   if (!data?.playlist) return null;
   const { uploadBy } = data?.playlist;
 
-  // show Modal share
-  const handleShowModal = () => {
-    dispatch(setIsShowModal(!isShowModal));
-  };
-
-  console.log(isShowModal);
   return (
     <div className="bg-bgColor2 flex items-center justify-center py-3 px-6 mb-11">
       <div className="flex-1 flex gap-x-2 items-center">
@@ -40,7 +28,7 @@ export default function PlayListDownLoad(props: PlayListDownLoadProps) {
           </h3>
         </div>
       </div>
-      <ShareDown handleShowModalShare={handleShowModal}></ShareDown>
+      <ShareDown></ShareDown>
     </div>
   );
 }
