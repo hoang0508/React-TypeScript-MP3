@@ -6,20 +6,24 @@ import { first } from "../../configs/ConfigDateTime";
 import { setDecreDate, setIcreDate } from "../../redux/RankingSlice";
 
 const RankingDate = () => {
+  // current day
   const curr: any = new Date();
   const dispatch = useDispatch();
   const { days, weeks } = useSelector((state: any) => state.ranking);
 
+  // First day
   const firstD = curr.getDate() - days;
-  const lastD = firstD - 6;
-
   const firstday = new Date(curr.setDate(firstD))
     .toLocaleDateString("vi-VI")
     .split("/")
     .slice(0, 2)
     .join("/");
 
-  const lastday = new Date(curr.setDate(lastD))
+  // lasDays
+  const lastD = firstD - 6;
+  const lastday: any = new Date();
+  lastday.setDate(lastD);
+  const lastDaysRank = lastday
     .toLocaleDateString("vi-VI")
     .split("/")
     .slice(0, 2)
@@ -36,7 +40,7 @@ const RankingDate = () => {
           <IocnChervonL className="w-4 h-4" />
         </button>
         <span className="text-text1 font-medium">
-          {lastday} - {firstday}
+          {lastDaysRank} - {firstday}
         </span>
         <button
           className="cursor-pointer"
