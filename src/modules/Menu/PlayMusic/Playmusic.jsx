@@ -27,21 +27,11 @@ export default function Playmusic() {
   const { dataTableRank } = useSelector((state) => state.ranking);
   const dataTableRankSong = dataTableRank?.ranking?.song;
 
-  const h =
-    dataTableRankSong &&
-    dataTableRankSong.length > 0 &&
-    dataTableRankSong.map((item) => {
-      return item?.songKey;
-    });
-
-  console.log(h);
-
   // render khi hiển thị lần đầu nếu key là undefine
   let checkKey;
-
   if (dataPlayListSongs) {
     checkKey = dataPlayListSongs[0]?.key;
-  } else if (data) {
+  } else if (dataSong1) {
     checkKey = data?.song && data?.song[0].key;
   } else if (dataTableRankSong) {
     checkKey =
@@ -79,13 +69,13 @@ export default function Playmusic() {
       : dataSong?.song?.artists &&
         dataSong?.song?.artists.map((art) => art.name).join(" , ");
 
+    
+
   //  Context usePlaymusic
   const { handleClickPlay, handleClickPause, handleRepeatMusic, repeatMusic } =
     useMusicPlay();
 
   //data song length
-  // const dataSongLength = dataPlayListSongs ? dataPlayListSongs : data?.song;
-
   let dataSongLength;
   if (dataPlayListSongs) {
     dataSongLength = dataPlayListSongs;
@@ -106,11 +96,10 @@ export default function Playmusic() {
         return item.key;
       });
   } else if (dataSong1) {
-    MusicKeyData =
-      data?.song &&
-      dataSong1.map((item, index) => {
-        return item.key;
-      });
+    MusicKeyData = dataSong1 && dataSong1.length > 0;
+    dataSong1.map((item, index) => {
+      return item.key;
+    });
   } else if (dataTableRank) {
     MusicKeyData =
       dataTableRankSong &&
@@ -119,8 +108,6 @@ export default function Playmusic() {
         return item?.songKey;
       });
   }
-
-  console.log(MusicKeyData);
 
   // Clean up useEffect
   const isMounted = React.useRef(true);
@@ -156,8 +143,6 @@ export default function Playmusic() {
   const handleClickPrevMusic = () => {
     changeSong(-1);
   };
-
-  console.log(dataSongLength?.length);
 
   // change Song Music next , prev
   function changeSong(dir) {

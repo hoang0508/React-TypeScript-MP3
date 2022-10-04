@@ -12,7 +12,6 @@ export default function PlayListContent(props: PlayListContentProps) {
   if (!data?.playlist) return null;
   const dataPlayList = data?.playlist;
   const { title, artists, dateCreate, listTag } = data?.playlist;
-  console.log(dataPlayList?.artists);
   return (
     <div className="flex gap-x-6 mb-6">
       <PlayListItem dataPlayList={dataPlayList}></PlayListItem>

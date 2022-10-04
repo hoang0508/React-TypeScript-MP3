@@ -13,7 +13,7 @@ export default function RankingTop(props: IRankingTopProps) {
   const dataRankingSong = dataTableRank?.ranking?.song[0];
   if (!dataRankingSong) return;
   const { title, artists } = dataRankingSong;
-  console.log(dataTableRank);
+
   return (
     <div className="flex gap-x-10 bg-bgColor2 py-[27px] pl-10 pr-8 mb-6">
       <div className="relative flex-shrink-0">

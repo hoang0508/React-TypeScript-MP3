@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import HeadingLine from "../../components/common/Headingline";
@@ -9,6 +9,7 @@ import MusicImageAuthor from "../music/parts/MusicImageAuthor";
 import MusicTitle from "../music/parts/MusicTitle";
 import lodash from "lodash";
 import { useMusicPlay } from "../../contexts/ContextProviderMusic";
+import { useSerialIds } from "highcharts";
 
 export interface PlayListSongsProps {}
 
@@ -33,7 +34,7 @@ const titleHead: {
 export default function PlayListSongs(props: PlayListSongsProps) {
   const dispatch = useDispatch();
   // context
-  const { handleClickPlay } = useMusicPlay();
+  const { handleClickPlay, handleClickPause } = useMusicPlay();
 
   // data Play List
   const data = useSelector((state: any) => state.music.dataPlayList);
@@ -43,17 +44,27 @@ export default function PlayListSongs(props: PlayListSongsProps) {
 
   if (!data?.playlist) return null;
   const { songs } = data?.playlist;
+  console.log(
+    "🚀 ~ file: PlayListSongs.tsx ~ line 46 ~ PlayListSongs ~ songs",
+    songs
+  );
 
   const handleSongItem = (item: MusicItemType, index: number) => {
     // console.log(item);
-    dispatch(setMusicSongKey(item.key));
-    dispatch(setIndexSong(index));
+    dispatch(setMusicSongKey(item?.key));
+    dispatch(setIndexSong(0));
 
-    setTimeout(
-      lodash.debounce(() => {
-        handleClickPlay();
-      }, 500)
-    );
+    handleClickPause();
+
+    if (songs && songs.length > 0) {
+      setTimeout(
+        lodash.debounce(() => {
+          handleClickPlay();
+        }, 500)
+      );
+    } else {
+      handleClickPause();
+    }
   };
 
   return (

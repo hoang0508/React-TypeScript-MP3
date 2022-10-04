@@ -12,15 +12,17 @@ interface MusicSongProps {
 
 export default function MusicSong({ dataSong }: MusicSongProps) {
   // context music play
-  const { handleClickPlay } = useMusicPlay();
+  const { handleClickPlay, handleClickPause } = useMusicPlay();
 
   const dispatch = useDispatch();
 
   // handle Click Item Song Music
-  const handleItemSong = (item: MusicItemType) => {
-    dispatch(setMusicSongKey(item.key));
+  const handleItemSong = (item: MusicItemType, index: number) => {
+    console.log(index);
+    dispatch(setMusicSongKey(item?.key));
     dispatch(setIndexSong(0));
 
+    handleClickPause();
     setTimeout(
       lodash.debounce(() => {
         handleClickPlay();
@@ -28,16 +30,18 @@ export default function MusicSong({ dataSong }: MusicSongProps) {
     );
   };
 
+  console.log(dataSong);
+
   return (
     <div className="flex flex-wrap gap-2">
       {dataSong &&
         dataSong.length > 0 &&
-        dataSong.map((item: MusicItemType) => (
+        dataSong.map((item: MusicItemType, index: number) => (
           <div
             key={v4()}
             className="w-[calc(50%-8px)] bg-bgColor2 p-2"
             onClick={() => {
-              handleItemSong(item);
+              handleItemSong(item, index);
             }}
           >
             <MusciItem

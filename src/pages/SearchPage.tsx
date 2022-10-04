@@ -110,6 +110,8 @@ const SearchPage = () => {
     }
   }, [dataSearch]);
 
+  // console.log(dataSearch);
+
   return (
     <LayoutMusicPage musicSidebarR>
       <div className="border-b border-borderColor pb-3 mb-8 relative">
