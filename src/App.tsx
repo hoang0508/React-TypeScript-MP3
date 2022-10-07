@@ -1,4 +1,3 @@
-import { explore, exploreArtists } from "nhaccuatui-api-full/dist";
 import React, { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { LocalSrogateProvider } from "./contexts/ContextLocalStroage";
@@ -11,6 +10,7 @@ const DiscoverArtistPage = lazy(() => import("./pages/DiscoverArtistPage"));
 const DiscoverSongPage = lazy(() => import("./pages/DiscoverSongPage"));
 const TopicPage = lazy(() => import("./pages/TopicPage"));
 const TableRankingPage = lazy(() => import("./pages/TableRankingPage"));
+const LyricPage = lazy(() => import("./pages/LyricPage"));
 
 const {
   getHome,
@@ -26,14 +26,14 @@ const {
   //... and many other services
 } = require("nhaccuatui-api-full");
 function App() {
-  useEffect(() => {
-    (async () => {
-      const data = await getChart();
-      console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data);
-      const h = new Date(1664865014027).toLocaleDateString("vi-VI");
-      console.log("🚀 ~ file: App.tsx ~ line 33 ~ h", h);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const data1 = await getLyric("NfdN7JPPXVgi");
+  //     const data2 = await getHome();
+  //     console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data1);
+  //     console.log("🚀 ~ file: App.tsx ~ line 15 ~ data", data2);
+  //   })();
+  // }, []);
   return (
     <Suspense
       fallback={
@@ -62,6 +62,7 @@ function App() {
         <Route path="/PlayList/:id" element={<PlayListPage />}></Route>
         <Route path="/VideoMusic/:id" element={<VideoPage />}></Route>
         <Route path="/Topic/:id" element={<TopicPage />}></Route>
+        <Route path="/Lyric/:id" element={<LyricPage />}></Route>
         <Route path="/table-ranking" element={<TableRankingPage />}></Route>
         <Route path="/realtime" element={<RealTimeRankingPage />}></Route>
       </Routes>

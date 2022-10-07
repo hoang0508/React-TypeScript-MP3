@@ -3,6 +3,7 @@ import AccordionSlice from "./AccordionSlice";
 import AuthenSlice from "./AuthenSlice";
 import DiscoverSlice from "./DiscoverSlice";
 import GlobalSlice from "./GlobalSlice";
+import LyricSlice from "./LyricSlice";
 import MusicSlice from "./MusicSlice";
 import RankingSlice from "./RankingSlice";
 import SearchSlice from "./SearchSlice";
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   discover: DiscoverSlice,
   accordion: AccordionSlice,
   ranking: RankingSlice,
+  lyric: LyricSlice,
   global: GlobalSlice,
 });
 

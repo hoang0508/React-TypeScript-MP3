@@ -42,7 +42,7 @@ export const fetchDiscoverExplore: any = createAsyncThunk(
 const DiscoverSlice = createSlice({
   name: "discover",
   initialState: {
-    isLoading: false,
+    isLoading: true,
     errorMessage: "",
     dataDisTrending: {},
     dataExploreArtists: {},

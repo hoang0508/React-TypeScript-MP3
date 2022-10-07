@@ -26,7 +26,7 @@ export default function MusicImageAuthor({
         dataAuthor.map((item: any) => (
           <div key={v4()} className="music-image--author">
             <img
-              src={item?.imageUrl}
+              src={item?.imageUrl || "/img-error.png"}
               alt=""
               className="w-8 h-8 rounded-full object-cover border-2 border-white "
               onError={(e: any) => onErrorImg(e)}

@@ -18,7 +18,7 @@ export const Fetchdata: any = createAsyncThunk(
 
 // data music song
 export const FetchDataSong: any = createAsyncThunk(
-  "",
+  "fetchSong",
   async (payload: string) => {
     const data = await getSong(payload);
     return data;

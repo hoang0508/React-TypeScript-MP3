@@ -9,6 +9,7 @@ export enum NavigateName {
   PlayList = "PlayList",
   Video = "Video",
   Topic = "Topic",
+  Lyric = "Lyric",
 }
 
 export enum Rankcategory {

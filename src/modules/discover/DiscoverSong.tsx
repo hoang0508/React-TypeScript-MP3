@@ -2,6 +2,7 @@ import * as React from "react";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
 import GridLayout from "../../components/common/GridLayout";
+import { NavigateName } from "../../utils/enum";
 import { MusicItemType } from "../../utils/type";
 import MusciItem from "../music/MusicItem";
 
@@ -9,18 +10,10 @@ export interface IDiscoverSongProps {}
 
 export default function DiscoverSong(props: IDiscoverSongProps) {
   const { dataExporeSPV } = useSelector((state: any) => state.discover);
-  console.log(
-    "🚀 ~ file: DiscoverSong.tsx ~ line 14 ~ DiscoverSong ~ dataExporeSPV",
-    dataExporeSPV
-  );
 
   if (dataExporeSPV?.status !== "success") return null;
 
   const { data: dataDisCSong } = dataExporeSPV;
-  console.log(
-    "🚀 ~ file: DiscoverSong.tsx ~ line 13 ~ DiscoverSong ~ dataDisCSong",
-    dataDisCSong
-  );
 
   return (
     <GridLayout>
@@ -31,6 +24,7 @@ export default function DiscoverSong(props: IDiscoverSongProps) {
             key={v4()}
             data={item}
             heading="abc"
+            isNavigate={NavigateName.Lyric}
             author={
               item.artists &&
               item.artists.map((art: any) => art.name).join(" , ")

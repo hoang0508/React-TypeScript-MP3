@@ -49,6 +49,9 @@ export default function MusciItem({
       case NavigateName.Topic:
         navigate(`/Topic/${key}`);
         break;
+      case NavigateName.Lyric:
+        navigate(`/Lyric/${key}`);
+        break;
       default:
         break;
     }
@@ -63,7 +66,11 @@ export default function MusciItem({
     (state: any) => state.ranking
   );
 
-  if (isLoadingRanking && isLoadingMusic)
+  const { isLoading: isLoadingDisvover } = useSelector(
+    (state: any) => state.discover
+  );
+
+  if (isLoadingRanking && isLoadingMusic && isLoadingDisvover)
     return (
       <LoadingMusicItem
         data={data}
