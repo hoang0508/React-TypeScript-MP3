@@ -19,7 +19,6 @@ export default function SearchHistory(props: ISearchHistoryProps) {
 
   // handle removeAll his
   const handleRemoveAllHis = () => {
-    localStorage.clear();
     setValueSearchHis([]);
   };
 

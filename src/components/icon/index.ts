@@ -7,6 +7,7 @@ import IconDelete from "./IconDelete";
 import IconDiscover from "./IconDiscover";
 import IconDots from "./IconDots";
 import IconDownLoad from "./IconDownLoad";
+import IconHeart from "./IconHeart";
 import IconHome from "./IconHome";
 import IconLogo from "./IconLogo";
 import IconLogout from "./IconLogout";
@@ -40,4 +41,5 @@ export {
   IconArrowUp,
   IconRandom,
   IconDelete,
+  IconHeart,
 };

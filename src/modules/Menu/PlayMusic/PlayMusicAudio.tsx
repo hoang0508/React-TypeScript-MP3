@@ -52,8 +52,15 @@ export default function PlayMusicAudio({
 
   const muteBolean = k > 0 ? false : true;
 
-  // console.log(configMusicItemMp3);
-  // console.log(dataMusicKey);
+  console.log(configMusicItemMp3);
+
+  if (!dataMusicKey) return null;
+  const srcDataMusicKey =
+    dataMusicKey &&
+    dataMusicKey?.streamUrls
+      ?.slice(0, 1)
+      ?.map((item: any) => item?.streamUrl)
+      .join("");
 
   return (
     <div className="mt-4">
@@ -69,8 +76,8 @@ export default function PlayMusicAudio({
         <audio
           muted={muteBolean}
           src={
-            indexSong >= 1
-              ? dataMusicKey?.song?.streamUrls[0]?.streamUrl
+            indexSong > 1
+              ? srcDataMusicKey
               : configMusicItemMp3?.streamUrls[0]?.streamUrl
           }
           ref={refMp3}

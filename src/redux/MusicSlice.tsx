@@ -69,6 +69,7 @@ const MusicSlice = createSlice({
     isShowModal: false,
     errorMessage: "",
     indexSong: 0,
+    itemFavorite: "",
   },
   reducers: {
     // setMusicSongKey
@@ -100,6 +101,11 @@ const MusicSlice = createSlice({
     setIsShowModal: (state, action) => ({
       ...state,
       isShowModal: action.payload,
+    }),
+    // setfavorite
+    setItemFavorite: (state, action) => ({
+      ...state,
+      itemFavorite: action.payload,
     }),
   },
   extraReducers: (builder) => {
@@ -155,5 +161,6 @@ export const {
   setDataMusicNewList,
   setDataMusicNews,
   setIsShowModal,
+  setItemFavorite,
 } = MusicSlice.actions;
 export default MusicSlice.reducer;

@@ -63,13 +63,11 @@ export default function Playmusic() {
 
   //author song
   const authorSong =
-    indexSong >= 1
+    indexSong > 1
       ? dataMusicKey?.song?.artists &&
         dataMusicKey?.song?.artists.map((art) => art.name).join(" , ")
       : dataSong?.song?.artists &&
         dataSong?.song?.artists.map((art) => art.name).join(" , ");
-
-    
 
   //  Context usePlaymusic
   const { handleClickPlay, handleClickPause, handleRepeatMusic, repeatMusic } =
@@ -96,9 +94,9 @@ export default function Playmusic() {
         return item.key;
       });
   } else if (dataSong1) {
-    MusicKeyData = dataSong1 && dataSong1.length > 0;
+    MusicKeyData = dataSong1 && dataSong1?.length > 0;
     dataSong1.map((item, index) => {
-      return item.key;
+      return item?.key;
     });
   } else if (dataTableRank) {
     MusicKeyData =
@@ -129,9 +127,9 @@ export default function Playmusic() {
 
   // useEffect call data getSong key ,
   React.useEffect(() => {
-    FetchMusicKey(MusicKeyData, indexSong).then((res) =>
-      dispatch(setDataMusicKey(res))
-    );
+    FetchMusicKey(MusicKeyData, indexSong).then((res) => {
+      dispatch(setDataMusicKey(res));
+    });
   }, [indexSong, dispatch]);
 
   // Next Music play
@@ -191,13 +189,13 @@ export default function Playmusic() {
         <MusciItem
           classNames="h-[240px] w-[240px]"
           heading="abc"
-          data={indexSong > 0 ? dataMusicKey?.song : dataSong?.song}
+          data={indexSong > 0 ? dataMusicKey : dataSong?.song}
           playNot
           author={authorSong}
         ></MusciItem>
       </div>
       <div>
-        <PlayMusicVolume></PlayMusicVolume>
+        <PlayMusicVolume data={dataMusicKey}></PlayMusicVolume>
         <PlayMusicAudio
           dataSong={dataSong}
           dataMusicKey={dataMusicKey}

@@ -1,11 +1,15 @@
-import * as React from "react";
-import { IconDots, IconVolume } from "../../../components/icon";
+import React from "react";
+import { IconVolume } from "../../../components/icon";
 import { useMusicPlay } from "../../../contexts/ContextProviderMusic";
 import useHover from "../../../hooks/useHover";
+import { MusicItemType } from "../../../utils/type";
+import PlayFavorite from "./PlayFavorite";
 
-export interface PlayMusicVolumeProps {}
+interface PlayMusicVolumeProps {
+  data: MusicItemType;
+}
 
-export default function PlayMusicVolume(props: PlayMusicVolumeProps) {
+export default function PlayMusicVolume({ data }: PlayMusicVolumeProps) {
   //  Context usePlaymusic
   const { volume, setVolume } = useMusicPlay();
 
@@ -43,7 +47,7 @@ export default function PlayMusicVolume(props: PlayMusicVolumeProps) {
         </span>
       </div>
       <span>Danh sách phát</span>
-      <IconDots></IconDots>
+      <PlayFavorite data={data}></PlayFavorite>
     </div>
   );
 }

@@ -6,9 +6,13 @@ const LocalStroContext = createContext(undefined);
 const LocalSrogateProvider = ({ children, props }: any) => {
   //  hook LocalStrorage
   const { storedValue, setValue } = useLocalStorage("search-history", []);
+  const { storedValue: storedFavorite, setValue: setValueFavorite } =
+    useLocalStorage("favorite-song", []);
   const value = {
     storedValue,
     setValue,
+    storedFavorite,
+    setValueFavorite,
   };
   return (
     <LocalStroContext.Provider value={value} {...props}>
